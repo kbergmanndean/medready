@@ -1,7 +1,69 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#a way that should work but doesn't
+# def medications
+#     response=RestClient.get "https://api.fda.gov/drug/drugsfda.json?api_key=Rgzs9smSz6olwQjP5i9dP0zRI95Z67bPtvc7pYLP&limit=20"
+#     json=JSON.parse response
+#     # byebug
+#     if !json.nil?
+#         json["results"].map do |medication|
+#             if (medication["openfda"]["generic_name"][0] && medication["products"][0]["active_ingredients"][0]["strength"])
+#                  Medication.create(generic_name:"#{medication["openfda"]["generic_name"][0]}", dosage:"#{medication["products"][0]["active_ingredients"][0]["strength"]}")
+#             end
+#         end
+#     else
+#         puts "error seeding medications"
+#     end
+# end
+# medications()
+
+#refactoring of first way
+# def medications
+#     response=RestClient.get "https://api.fda.gov/drug/drugsfda.json?api_key=Rgzs9smSz6olwQjP5i9dP0zRI95Z67bPtvc7pYLP&limit=20"
+#     json=JSON.parse response
+#     # byebug
+#     if !json.nil?
+#         json["results"].filter_map {|medication| Medication.create(generic_name:"#{medication["openfda"]["generic_name"][0]}", dosage: "#{medication["products"][0]["active_ingredients"][0]["strength"]}") if medication["openfda"]["generic_name"][0] && medication["products"][0]["active_ingredients"][0]["strength"]}
+#     else
+#         puts "error seeding medications"
+#     end
+# end
+# medications()
+
+#way that works:
+# def medications
+#     response=RestClient.get "https://api.fda.gov/drug/drugsfda.json?api_key=Rgzs9smSz6olwQjP5i9dP0zRI95Z67bPtvc7pYLP&limit=1000"
+#     json=JSON.parse response
+#     # byebug
+#     if !json.nil?
+#         json["results"].map do |medication|
+#             if (medication["openfda"] && medication["openfda"]["generic_name"] && medication["openfda"]["generic_name"][0] && medication["products"] && medication["products"][0] && medication["products"][0]["active_ingredients"] && medication["products"][0]["active_ingredients"][0] && medication["products"][0]["active_ingredients"][0]["strength"])
+#                  Medication.create(generic_name:"#{medication["openfda"]["generic_name"][0]}", dosage:"#{medication["products"][0]["active_ingredients"][0]["strength"]}")
+#             end
+#         end
+#     else
+#         puts "error seeding medications"
+#     end
+# end
+# medications()
+
+#add in brand name this is what I used
+def medications
+    response=RestClient.get "https://api.fda.gov/drug/drugsfda.json?api_key=Rgzs9smSz6olwQjP5i9dP0zRI95Z67bPtvc7pYLP&search=route=oral&limit=1000"
+    json=JSON.parse response
+    # byebug
+    if !json.nil?
+        json["results"].map do |medication|
+            if (medication["openfda"] && medication["openfda"]["generic_name"] && medication["openfda"]["generic_name"][0] && medication["products"] && medication["products"][0] && medication["products"][0]["brand_name"] && medication["products"][0]["active_ingredients"] && medication["products"][0]["active_ingredients"][0] && medication["products"][0]["active_ingredients"][0]["strength"])
+                 Medication.create(generic_name:"#{medication["openfda"]["generic_name"][0]}", dosage:"#{medication["products"][0]["active_ingredients"][0]["strength"]}", brand_name:"#{medication["products"][0]["brand_name"]}")
+            end
+        end
+    else
+        puts "error seeding medications"
+    end
+end
+medications()
+
+
+Doctor.create(name:"Dr.A", profession:"Pediatrician")
+Doctor.create(name:"Dr.B", profession:"Physician")
+Doctor.create(name:"Dr.C", profession:"Psychiatrist")
+

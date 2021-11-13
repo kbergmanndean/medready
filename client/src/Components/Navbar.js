@@ -1,8 +1,8 @@
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 function Navbar({user, setUser}){
 
-    const history=useHistory();
+    const history=useNavigate();
 
     function handleLogout(){
         async function logout(){

@@ -1,5 +1,5 @@
 import {useState} from "react"
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 function AddPre({med, doctors, prescriptions, setPrescriptions}){
     const [preDoc, setPreDoc] = useState(0)
@@ -8,7 +8,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
     const [cont, setCont] = useState("")
     const [errors, setErrors] = useState([])
 
-    let history = useHistory();
+    let history = useNavigate();
     const routeChange = () =>{ 
         let path = "/"; 
         history.push(path);

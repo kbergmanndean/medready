@@ -1,4 +1,4 @@
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import {useState} from "react";
 
 function Auth({user,setUser}){
@@ -6,7 +6,7 @@ function Auth({user,setUser}){
     const [password, setPassword]=useState('')
     const [errors,setErrors]=useState([])
 
-    const history=useHistory();
+    const history=useNavigate();
 
     async function handleSubmit(e){
         e.preventDefault()

@@ -1,5 +1,5 @@
 import './App.css';
-import {HashRouter as Router,Switch,Route, useHistory} from "react-router-dom"
+import {HashRouter as Router,Routes,Route, useNavigate} from "react-router-dom"
 import Home from "./Components/Home"
 import Search from "./Components/Search"
 import AddDoc from "./Components/AddDoc"
@@ -15,7 +15,7 @@ import Footer from "./Components/Footer"
 
 function App() {
 
-const history=useHistory();
+const history=useNavigate();
 
 const [med,setMed]=useState("")
 const [meds, setMeds]=useState([])
@@ -58,7 +58,7 @@ useEffect(() => {
     <div className="App">
       <Navbar user={user} setUser={setUser}/>
       <Router>
-        <Switch>
+        <Routes>
           {/* {localStorage.getItem("user_id")?
           <> */}
           <Route exact path="/signup" component= {()=><Auth setUser={setUser} user={user}/>}/>
@@ -72,7 +72,7 @@ useEffect(() => {
           {/* </>: */}
           <Route exact path="/login" component={()=><LoginAuth user={user} setUser={setUser}/>}/> 
           {/* }  */}
-          </Switch>
+          </Routes>
       </Router>
       <Footer/>
     </div>

@@ -1,5 +1,5 @@
 import {useState} from "react"
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import LoginAuth from "./LoginAuth"
 
 function AddDoc({setUser,user, setDoctors, doctors}){
@@ -11,7 +11,7 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         setDoctors(newArray)
     }
 
-    let history = useHistory();
+    let history = useNavigate();
     const routeChange = () =>{ 
         let path = "/doctors"; 
         history.push(path);

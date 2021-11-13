@@ -17,8 +17,6 @@ import Footer from "./Components/Footer"
 
 function App() {
 
-const history=useNavigate();
-
 const [med,setMed]=useState("")
 const [meds, setMeds]=useState([])
 const [doctors, setDoctors]=useState([])
@@ -51,7 +49,6 @@ useEffect(() => {
   fetchPreData();
  
   } else {
-    // history.push("/login")
     console.log("please log in")
   }
 }, []);

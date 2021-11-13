@@ -1,38 +1,106 @@
 .App {
-  text-align: center;
+  text-align:center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight:bold;
+  background-color:#e9f8f8;
+}
+.page-footer{
+  background-color:#f7c9ca;
+  bottom:0;
+  
+}
+.home,.login, .search-page,.addpre,.addDoc,.edit{
+  position:relative;
+  min-height:427pt;
+  /* min-height:100vh; */
+}
+.logout{
+  background-color:#fff3f4;
+}
+.auth{
+  margin-left:10pt;
+  height:30pt;
+}
+.welcome{
+  font-size: 20pt;
+}
+.btn{
+  background-color:#fff3f4;
+}
+.bird{
+  padding:0pt;
+  margin:0pt;
+}
+.header{
+  font-family: 'Comfortaa';
+  font-size:35pt;
+  padding:0pt;
+  margin:0pt;
+  display:inline-block;
+  font-weight:bold;
+}
+.subhead{
+  font-family: "Comfortaa";
+  font-size:30pt;
+  padding-top:10pt;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar{
+  background-color:#f7c9ca
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.user{
+  margin-left:20pt;
+  color:lightblack;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card {
+  background-color:#e9f8f8;
+  margin:10pt;
+  margin-left:40pt;
+  border:0pt;
 }
-
-.App-link {
-  color: #61dafb;
+.bottle{
+  /* padding-top:20pt;*/
+  /* margin-left:45pt; */
+  /* width:100pt; */
+  width:175pt;
+  margin-left:20pt;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-brand{
+  margin-left:10pt;
+}
+.nav-item{
+  margin-left:75pt;
+}
+ul{
+  list-style-type: none;
+}
+.addpre,.addDoc,.edit{
+width:50%;
+margin:auto;
+/* border:thin solid black; */
+}
+.addpre-inner{
+  width:75%;
+  margin:auto;
+} 
+.addDoc{
+  height:430pt;
+}
+.doctor-form{
+  margin-right:100pt;
+  margin-left:100pt;
+}
+.doctor-li{
+  margin:10pt;
+}
+.docs{
+  height:430pt;
+}
+.search{
+  margin:10pt;
+  margin-left:100pt;
+  margin-right:100pt;
+}
+.med-li{
+  margin:10pt;
 }

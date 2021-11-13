@@ -1,5 +1,5 @@
 import bottle from "../pictures/bottle4.png"
-import React from 'react'
+import React from "react"
 
 function MyPre({pre, prescriptions, setPrescriptions}){
    
@@ -17,7 +17,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     return(
         
         <div className="card" style={{width: "18rem"}}>
-            {pre.user_id==user_id?
+            {pre.user_id===user_id?
             <>
             <img src={bottle} className="card-img-top bottle" alt="..."/>
             <div className="card-body">

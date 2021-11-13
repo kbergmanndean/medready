@@ -1,6 +1,6 @@
 import MyPre from "./MyPre"
 import bird2 from "../pictures/bird2.png"
-import React from 'react'
+import React from "react"
 
 function Home({prescriptions, setPrescriptions}){
 

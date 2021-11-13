@@ -1,5 +1,5 @@
 import bottle from "../pictures/bottle4.png"
-
+import React from 'react'
 
 function MyPre({pre, prescriptions, setPrescriptions}){
    

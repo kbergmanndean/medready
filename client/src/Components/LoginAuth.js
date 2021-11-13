@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Login from "./Login";
 import Auth from "./Auth";
 import bird2 from "../pictures/bird2.png"

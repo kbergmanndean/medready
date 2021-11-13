@@ -1,3 +1,5 @@
+import React from "react"
+import ReactDOM from 'react-dom'
 import './App.css';
 import {HashRouter as Router,Routes,Route, useNavigate} from "react-router-dom"
 import Home from "./Components/Home"

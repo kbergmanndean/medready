@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import LoginAuth from './LoginAuth'
 
 function Search({setMed, meds, user, setUser}){

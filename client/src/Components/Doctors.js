@@ -4,7 +4,7 @@ import LoginAuth from "./LoginAuth"
 function Doctors({doctors,user, setUser, setDoctors}){
 
     async function removeDoc(id){
-        await fetch(`http://medready.herokuapp.com/doctors/${id}`,{
+        await fetch(`https://medready.herokuapp.com/doctors/${id}`,{
             method:"DELETE",
         })
             .then(()=>{

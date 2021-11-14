@@ -23,7 +23,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
     async function handleSubmit(e){
         e.preventDefault();
         const newPre={user_id:user_id,medication_id: med.id, doctor_id:preDoc, daily_dosage:dose, directions:direct, doses_in_container:cont }
-        const res=await fetch("http://medready.herokuapp.com/prescriptions",{
+        const res=await fetch("https://medready.herokuapp.com/prescriptions",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
             body:JSON.stringify(newPre)

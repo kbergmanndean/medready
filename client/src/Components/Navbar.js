@@ -7,7 +7,7 @@ function Navbar({user, setUser}){
 
     function handleLogout(){
         async function logout(){
-            const res=await fetch("http://medready.herokuapp.com/logout",{
+            const res=await fetch("https://medready.herokuapp.com/logout",{
                 method:"DELETE"})
                 if (res.ok){
                     setUser(null);

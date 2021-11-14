@@ -1,8 +1,9 @@
 import React from "react"
+//import {useNavigate} from 'react-router-dom'
 
 function Navbar({user, setUser}){
 
-    
+    //const history=useNavigate();
 
     function handleLogout(){
         async function logout(){
@@ -14,6 +15,7 @@ function Navbar({user, setUser}){
                     
                 };
         };logout();
+        //history.push('/')
         
     };
 

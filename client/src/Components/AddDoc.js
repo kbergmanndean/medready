@@ -14,7 +14,7 @@ function AddDoc({setUser,user, setDoctors, doctors}){
     let history = useNavigate();
     const routeChange = () =>{ 
         let path = "/doctors"; 
-        history.push(path);
+        history(path);
     }
 
     async function handleSubmit(e){

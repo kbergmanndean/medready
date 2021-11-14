@@ -20,7 +20,7 @@ function AddDoc({setUser,user, setDoctors, doctors}){
     async function handleSubmit(e){
         e.preventDefault();
         const newDoctor={name:name, profession:type}
-        const res=await fetch("http://localhost:3000/doctors",{
+        const res=await fetch("http://medready.herokuapp.com/doctors",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
             body:JSON.stringify(newDoctor)

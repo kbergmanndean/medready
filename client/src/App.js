@@ -28,17 +28,17 @@ let isMounted
 
 useEffect(() => {
   async function fetchMedData() {
-    const res = await fetch("http://localhost:3000/medications");
+    const res = await fetch("http://medready.herokuapp.com/medications");
     const medData = await res.json();
     setMeds(medData);
   }
   async function fetchDocData() {
-    const res = await fetch("http://localhost:3000/doctors");
+    const res = await fetch("http://medready.herokuapp.com/doctors");
     const docData = await res.json();
     setDoctors(docData);
   }
   async function fetchPreData(){
-    const res=await fetch("http://localhost:3000/prescriptions")
+    const res=await fetch("http://medready.herokuapp.com/prescriptions")
     const preData=await res.json()
     setPrescriptions(preData)
     console.log(preData)

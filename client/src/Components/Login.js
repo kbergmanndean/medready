@@ -14,7 +14,7 @@ function Login({setUser,user}){
             user_name:username,
             password:password
         }
-        const res=await fetch(`https://ancient-coast-67474.herokuapp.com/https://medready.herokuapp.com/log_in`,{
+        const res=await fetch(`https://medready.herokuapp.com/log_in`,{
             // mode: 'no-cors',
             method:'POST',
             headers:{'Content-Type':'application/json'

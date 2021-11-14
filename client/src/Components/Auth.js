@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom"
+// import {useNavigate} from "react-router-dom"
 import React, {useState} from "react";
 
 function Auth({user,setUser}){
@@ -6,7 +6,7 @@ function Auth({user,setUser}){
     const [password, setPassword]=useState('')
     const [errors,setErrors]=useState([])
 
-    const history=useNavigate();
+    // const history=useNavigate();
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -14,7 +14,7 @@ function Auth({user,setUser}){
             user_name: username,
             password: password
         }
-        const res=await fetch(`https://ancient-coast-67474.herokuapp.com/https://medready.herokuapp.com/users`,{
+        const res=await fetch(`https://medready.herokuapp.com/users`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({user})

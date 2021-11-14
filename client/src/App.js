@@ -66,8 +66,8 @@ useEffect(() => {
           <Route exact path="/" element={<Home user={user} prescriptions={prescriptions} setPrescriptions={setPrescriptions} page={page} setPage={setPage}/>}/>
           <Route exact path="/doctors" element={<Doctors setUser={setUser} user={user} doctors={doctors} setDoctors={setDoctors}/>}/>
           <Route exact path="/add_doc" element={<AddDoc setUser={setUser} user={user} setDoctors={setDoctors} doctors={doctors}/>}/>
-          {prescriptions? prescriptions.map(pre=>{return <Route user={user} key={pre.id} exact path={`/edit/${pre.id}`} element={()=><Edit doctors={doctors} pre={pre} page={page} setPage={setPage}/>}/>}):null}
-          {meds? meds.map(item=>{return <Route user={user} key={item.id} exact path={`/medications/${item.id}`} element={()=><AddPre key={item.id} med={item} setMed={setMed} doctors={doctors} prescriptions={prescriptions} setPrescriptions={setPrescriptions} isMounted={isMounted}/>}/>}):null}
+          {prescriptions? prescriptions.map(pre=>{return <Route user={user} key={pre.id} exact path={`/edit/${pre.id}`} element={<Edit doctors={doctors} pre={pre} page={page} setPage={setPage}/>}/>}):null}
+          {meds? meds.map(item=>{return <Route user={user} key={item.id} exact path={`/medications/${item.id}`} element={<AddPre key={item.id} med={item} setMed={setMed} doctors={doctors} prescriptions={prescriptions} setPrescriptions={setPrescriptions} isMounted={isMounted}/>}/>}):null}
           {/* </>: */}
           <Route exact path="/login" element={<LoginAuth user={user} setUser={setUser}/>}/> 
           {/* }  */}

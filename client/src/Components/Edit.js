@@ -19,7 +19,7 @@ function Edit({doctors,pre}){
     async function handleSubmit(e){
         e.preventDefault();
         const editedPre={medication_id:currentMedId, doctor_id:currentDocId, daily_dosage:dosage, directions:directions, doses_in_container:doses}
-        const res=await fetch (`http://localhost:3000/prescriptions/${pre.id}`,{
+        const res=await fetch (`http://medready.herokuapp.com/prescriptions/${pre.id}`,{
             method: 'PATCH',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify(editedPre)

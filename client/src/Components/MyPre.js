@@ -4,7 +4,7 @@ import React from "react"
 function MyPre({pre, prescriptions, setPrescriptions}){
    
     async function handleDelete(id){
-        await fetch(`http://localhost:3000/prescriptions/${id}`,{
+        await fetch(`http://medready.herokuapp.com/prescriptions/${id}`,{
                 method:"DELETE",
             })
                 .then(()=>{

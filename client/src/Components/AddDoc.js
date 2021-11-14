@@ -11,6 +11,8 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         setDoctors(newArray)
     }
 
+    const user_id=+localStorage.getItem("user_id")
+
     let history = useNavigate();
     const routeChange = () =>{ 
         let path = "/doctors"; 
@@ -19,7 +21,7 @@ function AddDoc({setUser,user, setDoctors, doctors}){
 
     async function handleSubmit(e){
         e.preventDefault();
-        const newDoctor={name:name, profession:type}
+        const newDoctor={name:name, profession:type, user_id:user_id}
         const res=await fetch("https://medready.herokuapp.com/doctors",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
@@ -33,10 +35,11 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         else {
         setErrors(doctorAdded.error)
         }
+        
     }
 
 
-
+    
 
     return(
         localStorage.getItem("user_id")?

@@ -2,6 +2,7 @@ class User < ApplicationRecord
     # has_many :doctors
     has_many :medications, through: :prescriptions
     has_many :prescriptions
+    has_many :doctors
     
     has_secure_password
 

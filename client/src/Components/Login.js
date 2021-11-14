@@ -14,12 +14,15 @@ function Login({setUser,user}){
             user_name:username,
             password:password
         }
-        const res=await fetch(`http://localhost:3000/log_in`,{
+        const res=await fetch(`https://ancient-coast-67474.herokuapp.com/http://localhost:3000/log_in`,{
+            // mode: 'no-cors',
             method:'POST',
-            headers:{'Content-Type':'application/json'},
+            headers:{'Content-Type':'application/json'
+            // , 'Access-Control-Allow_Origin':'*'
+            },
             body:JSON.stringify({user})
-        }); 
-        const userData=await res.json();
+        });
+        const userData= await res.json();
         if (userData.id){
             setUser(userData);
             console.log(user);

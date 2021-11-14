@@ -11,7 +11,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
     let history = useNavigate();
     const routeChange = () =>{ 
         let path = "/"; 
-        history.push(path);
+        history(path);
     }
 
     const addNewPre=(pre)=> {const newArray =[...prescriptions,pre]

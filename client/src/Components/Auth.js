@@ -14,7 +14,7 @@ function Auth({user,setUser}){
             user_name: username,
             password: password
         }
-        const res=await fetch(`https://medready.herokuapp.com/users`,{
+        const res=await fetch(`https://localhost:3000/users`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({user})

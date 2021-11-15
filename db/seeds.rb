@@ -63,7 +63,9 @@
 # medications()
 
 
-Doctor.create!(name:"Dr.A", profession:"Pediatrician", user_id:1)
+# Doctor.create!(name:"Dr.A", profession:"Pediatrician", user_id:1)
 # Doctor.create(name:"Dr.B", profession:"Physician")
 # Doctor.create(name:"Dr.C", profession:"Psychiatrist")
+
+# User.create!(user_name:"kaia", password:"123" )
 

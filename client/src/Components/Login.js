@@ -15,10 +15,8 @@ function Login({setUser,user}){
             password:password
         }
         const res=await fetch(`https://medready.herokuapp.com/log_in`,{
-            // mode: 'no-cors',
             method:'POST',
             headers:{'Content-Type':'application/json'
-            // , 'Access-Control-Allow_Origin':'*'
             },
             body:JSON.stringify({user})
         });

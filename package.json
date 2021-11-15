@@ -2,7 +2,8 @@
   "name": "phase-4-deploying-app-demo",
   "description": "Build scripts for Heroku",
   "engines": {
-    "node": "16.x"
+    "node": "16.1.0",
+    "npm": "7.16.0"
   },
   "scripts": {
     "build": "npm install --prefix client && npm run build --prefix client",

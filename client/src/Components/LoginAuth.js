@@ -21,7 +21,7 @@ function LoginAuth({ setUser ,user}) {
         </div>
       {showLogin ? (
         <>
-          {/* <Login setUser={setUser} user={user}/> */}
+          <Login setUser={setUser} user={user}/>
           <br/>
           <p>
             Don't have an account? &nbsp;
@@ -32,7 +32,7 @@ function LoginAuth({ setUser ,user}) {
         </>
       ) : (
         <>
-          {/* <Auth setUser={setUser} /> */}
+          <Auth setUser={setUser} />
           <br/>
           <br/>
           <p>

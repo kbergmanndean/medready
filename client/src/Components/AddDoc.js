@@ -30,6 +30,7 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         const doctorAdded= await res.json()
         if (res.ok){
         addNewDoc(doctorAdded);
+        console.log(user_id)
         routeChange();
         }
         else {

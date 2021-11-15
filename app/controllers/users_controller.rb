@@ -3,14 +3,14 @@ class UsersController < ApplicationController
 
     def index
         users=User.all
-        render json: users, include: :prescriptions
+        render json: users, include: [:prescriptions, :doctors]
     end
     
     def create
         user=User.create(user_params)
         session[:user_id]=user.id
         if user.valid?
-            render json:user, status: :created, include: :prescriptions
+            render json:user, status: :created, include: [:prescriptions, :doctors]
         else
             render json: {error:user.errors.full_messages}
         end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     def show
         usershow=User.find_by(id:params[:id])
-        render json: usershow, include: :prescriptions
+        render json: usershow, include: [:prescriptions, :doctors]
     end
         
     private

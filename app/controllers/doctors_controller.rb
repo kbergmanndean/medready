@@ -13,7 +13,7 @@ class DoctorsController < ApplicationController
     def create
         new_doctor=Doctor.create(doctor_params)
         if new_doctor.valid?
-            render json: new_doctor, status: :created
+            render json: new_doctor, include: [:user] status: :created
         else
             render json: {error:new_doctor.errors.full_messages}, status: :unprocessable_entity
         end

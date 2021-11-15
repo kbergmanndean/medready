@@ -14,7 +14,7 @@ function Login({setUser,user}){
             user_name:username,
             password:password
         }
-        const res=await fetch(`https://localhost:3000/log_in`,{
+        const res=await fetch(`http://localhost:3000/log_in`,{
             method:'POST',
             headers:{'Content-Type':'application/json'
             },

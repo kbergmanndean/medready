@@ -21,6 +21,12 @@ class UsersController < ApplicationController
         render json: usershow, include: [:prescriptions, :doctors]
     end
         
+    def destroy
+        user_delete=User.find_by(id:params[:id])
+        user_delete.destroy
+        head:no_content
+    end
+
     private
 
     def user_params

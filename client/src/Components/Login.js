@@ -1,4 +1,4 @@
-// import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import React, {useState} from "react";
 
 function Login({setUser,user}){
@@ -6,7 +6,7 @@ function Login({setUser,user}){
     const [password, setPassword]=useState('')
     const [errors,setErrors]=useState('')
 
-    // const history=useNavigate();
+    const navigate=useNavigate();
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -25,7 +25,7 @@ function Login({setUser,user}){
             setUser(userData);
             console.log(user);
             localStorage.setItem("user_id", userData.id)
-            // history.push('/')
+            // navigate('/');
         } else {
             setErrors(userData.errors)
             console.log(errors)

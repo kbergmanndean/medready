@@ -56,7 +56,7 @@ useEffect(() => {
   return (
     <div className="App">
       <Navbar user={user} setUser={setUser}/>
-      <Router>
+      {/* <Router> */}
         <Routes>
           {/* {localStorage.getItem("user_id")?
           <> */}
@@ -72,7 +72,7 @@ useEffect(() => {
           <Route exact path="/login" element={<LoginAuth user={user} setUser={setUser}/>}/> 
           {/* }  */}
           </Routes>
-      </Router>
+      {/* </Router> */}
       <Footer/>
     </div>
   );

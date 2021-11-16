@@ -1,9 +1,9 @@
 import React from "react"
-//import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 function Navbar({user, setUser}){
 
-    //const history=useNavigate();
+    const navigate=useNavigate();
 
     function handleLogout(){
         async function logout(){
@@ -15,7 +15,7 @@ function Navbar({user, setUser}){
                     
                 };
         };logout();
-        //history.push('/')
+        navigate('login');
     };
 
     const user_id=localStorage.getItem("user_id")
@@ -27,6 +27,8 @@ function Navbar({user, setUser}){
             })
                 
         };destroy();
+        handleLogout();
+        
     };
 
     return(

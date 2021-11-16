@@ -16,10 +16,18 @@ function Navbar({user, setUser}){
                 };
         };logout();
         //history.push('/')
-        
     };
 
     const user_id=localStorage.getItem("user_id")
+
+    function handleDelete(){
+        async function destroy(){
+            const res=await fetch(`https://medready.herokuapp.com/users/${user_id}`,{
+                method:"DELETE"
+            })
+                
+        };destroy();
+    };
 
     return(
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -44,9 +52,14 @@ function Navbar({user, setUser}){
                     </li>
                     
                     {localStorage.getItem("user_id")?
-                        <li className="nav-item">
-                        <button className="btn btn-outline-dark logout" onClick={handleLogout}>Log Out</button>
-                        </li>
+                        <div>
+                            <li className="nav-item">
+                                <button className="btn btn-outline-dark logout" onClick={handleLogout}>Log Out</button>
+                            </li>
+                            <li className="nav-item">
+                                <button className="btn btn-outline-dark delete-account" onClick={handleDelete}>Delete Account</button>
+                            </li>
+                        </div>
                     :
                     <li className="nav-item">
                     <a className="nav-link" href="/#/login">Login</a>

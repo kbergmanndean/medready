@@ -32,6 +32,7 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         addNewDoc(doctorAdded);
         console.log(user_id)
         console.log(doctorAdded)
+        console.log(doctorAdded.user_id)
         routeChange();
         }
         else {

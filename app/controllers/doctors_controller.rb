@@ -2,16 +2,16 @@ class DoctorsController < ApplicationController
     skip_before_action :authorize
     def index
         doctors=Doctor.all
-        render json: doctors
+        render json: doctors, include: :user
     end
 
     def show
         doctor=Doctor.find_by(id:params[:id])
-        render json: doctor
+        render json: doctor, include: :user
     end
 
     def create
-        new_doctor=Doctor.create!(doctor_params)
+        new_doctor=Doctor.create(doctor_params)
         if new_doctor.valid?
             render json: new_doctor, include: :user, status: :created
         else

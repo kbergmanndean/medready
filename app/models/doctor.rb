@@ -5,4 +5,5 @@ class Doctor < ApplicationRecord
 
     validates :name, presence: true
     validates :profession, presence: true
+    validates :user_id, presence: true
 end

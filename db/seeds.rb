@@ -46,24 +46,22 @@
 # medications()
 
 #this is what I used
-# def medications
-#     response=RestClient.get "https://api.fda.gov/drug/drugsfda.json?api_key=Rgzs9smSz6olwQjP5i9dP0zRI95Z67bPtvc7pYLP&search=route=oral&limit=1000"
-#     json=JSON.parse response
-#     # byebug
-#     if !json.nil?
-#         json["results"].map do |medication|
-#             if (medication["openfda"] && medication["openfda"]["generic_name"] && medication["openfda"]["generic_name"][0] && medication["products"] && medication["products"][0] && medication["products"][0]["brand_name"] && medication["products"][0]["active_ingredients"] && medication["products"][0]["active_ingredients"][0] && medication["products"][0]["active_ingredients"][0]["strength"])
-#                  Medication.create(generic_name:"#{medication["openfda"]["generic_name"][0]}", dosage:"#{medication["products"][0]["active_ingredients"][0]["strength"]}", brand_name:"#{medication["products"][0]["brand_name"]}")
-#             end
-#         end
-#     else
-#         puts "error seeding medications"
-#     end
-# end
-# medications()
+def medications
+    response=RestClient.get "https://api.fda.gov/drug/drugsfda.json?api_key=Rgzs9smSz6olwQjP5i9dP0zRI95Z67bPtvc7pYLP&search=route=oral&limit=1000"
+    json=JSON.parse response
+    # byebug
+    if !json.nil?
+        json["results"].map do |medication|
+            if (medication["openfda"] && medication["openfda"]["generic_name"] && medication["openfda"]["generic_name"][0] && medication["products"] && medication["products"][0] && medication["products"][0]["brand_name"] && medication["products"][0]["active_ingredients"] && medication["products"][0]["active_ingredients"][0] && medication["products"][0]["active_ingredients"][0]["strength"])
+                 Medication.create(generic_name:"#{medication["openfda"]["generic_name"][0]}", dosage:"#{medication["products"][0]["active_ingredients"][0]["strength"]}", brand_name:"#{medication["products"][0]["brand_name"]}")
+            end
+        end
+    else
+        puts "error seeding medications"
+    end
+end
+medications()
 
-# User.create!(username:'kaia' password: "123")
-Doctor.create!(user_id:20, name:"A", profession:"a")
 
 
 

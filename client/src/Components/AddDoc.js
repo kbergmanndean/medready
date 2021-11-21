@@ -25,12 +25,12 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         const res=await fetch("https://medready.herokuapp.com/doctors",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
-            body:JSON.stringify(newDoctor)
+            body: JSON.stringify(newDoctor)
         })
         const doctorAdded= await res.json()
         if (res.ok){
         addNewDoc(doctorAdded);
-        console.log(user_id)
+        console.log(newDoctor)
         console.log(doctorAdded) 
         routeChange();
         }

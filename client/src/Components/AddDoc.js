@@ -31,7 +31,8 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         if (res.ok){
         addNewDoc(doctorAdded);
         console.log(user_id)
-        console.log(newDoctor.user_id)
+        console.log(doctorAdded)
+        console.log(newDoctor)
         routeChange();
         }
         else {

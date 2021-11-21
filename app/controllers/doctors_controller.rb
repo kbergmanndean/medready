@@ -28,7 +28,7 @@ class DoctorsController < ApplicationController
     private
 
     def doctor_params
-        params.require(:doctor, :user_id).permit(:name, :profession)
+        params.require(:doctor).permit(:name, :profession, :user_id)
     end
 
 

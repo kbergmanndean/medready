@@ -11,7 +11,7 @@ class DoctorsController < ApplicationController
     end
 
     def create
-        new_doctor=Doctor.create(:name, :profession, :user_id)
+        new_doctor=Doctor.create!(doctor_params)
         if new_doctor.valid?
             render json: new_doctor, include: :user, status: :created
         else
@@ -27,9 +27,9 @@ class DoctorsController < ApplicationController
 
     private
 
-    # def doctor_params
-    #     params.require(:doctor).permit(:name, :profession, :user_id)
-    # end
+    def doctor_params
+        params.require(:doctor).permit(:name, :profession, :user_id)
+    end
 
 
 end

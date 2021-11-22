@@ -22,9 +22,9 @@ return(
         <h1 className="subhead">My Doctors</h1>
         <ul>
         {doctors.length>0?doctors.map(doc=>
-            // doc.user_id==user_id?
+            doc.user_id==user_id?
             <li className="doctor-li" key={doc.id}>Name: {doc.name}, Profession: {doc.profession} <button className="btn btn-outline-dark" onClick={()=>removeDoc(doc.id)}>Remove</button></li>
-            // :null
+            :null
             ):null}
         </ul>
         <a href="/#/search" className="btn btn-outline-dark">Search Medications</a>

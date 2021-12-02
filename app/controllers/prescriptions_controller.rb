@@ -40,6 +40,6 @@ class PrescriptionsController < ApplicationController
 
     private
     def script_params
-        params.require(:prescription).permit(:user_id, :medication_id, :doctor_id, :daily_dosage, :directions, :doses_in_container, :date)
+        params.require(:prescription).permit(:user_id, :medication_id, :doctor_id, :daily_dosage, :directions, :doses_in_container, :date.strftime("%F"))
     end
 end

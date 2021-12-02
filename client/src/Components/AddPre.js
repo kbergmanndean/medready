@@ -7,6 +7,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
     const [direct, setDirect] = useState("")
     const [cont, setCont] = useState("")
     const [errors, setErrors] = useState([])
+    const [date, setDate] = useState("")
 
     let history = useNavigate();
     const routeChange = () =>{ 
@@ -22,7 +23,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
 
     async function handleSubmit(e){
         e.preventDefault();
-        const newPre={user_id:user_id,medication_id: med.id, doctor_id:preDoc, daily_dosage:dose, directions:direct, doses_in_container:cont }
+        const newPre={user_id:user_id,medication_id: med.id, doctor_id:preDoc, daily_dosage:dose, directions:direct, doses_in_container:cont, date:date }
         const res=await fetch("https://medready.herokuapp.com/prescriptions",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
@@ -70,6 +71,10 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
                 <div className="form-group">
                     <label htmlFor="number-doses">Doses in Container</label>
                     <input type="text" className="form-control" id="number-doses" value={cont} onChange={(e)=>setCont(parseInt(e.target.value))}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="date">Date prescribed</label>
+                    <input type="text" className="form-control" id="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
                 </div>
                     <br/>
                     <button type="submit" className="btn btn-outline-dark form-submit">Submit</button>

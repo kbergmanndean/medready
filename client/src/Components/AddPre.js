@@ -33,11 +33,11 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
         
         if (res.ok){
         console.log(preAdded)
+        console.log(date)
         addNewPre(preAdded);
         routeChange();
         } 
         setErrors(preAdded.error) 
-        console.log(errors)
     }
     
 
@@ -73,8 +73,8 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
                     <input type="text" className="form-control" id="number-doses" value={cont} onChange={(e)=>setCont(parseInt(e.target.value))}/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="date">Date prescribed</label>
-                    <input type="text" className="form-control" id="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
+                    <label htmlFor="date">Date Prescribed</label>
+                    <input type="date" className="form-control" id="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
                 </div>
                     <br/>
                     <button type="submit" className="btn btn-outline-dark form-submit">Submit</button>

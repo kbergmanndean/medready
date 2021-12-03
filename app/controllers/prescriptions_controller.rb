@@ -13,7 +13,6 @@ class PrescriptionsController < ApplicationController
     end
 
     def create
-        # new_script=Prescription.create(script_params, user_id:params[:user_id])
         new_script=Prescription.create(script_params)
         if new_script.valid?
             render json:new_script, include: [:medication, :doctor], status: :created
@@ -40,6 +39,6 @@ class PrescriptionsController < ApplicationController
 
     private
     def script_params
-        params.require(:prescription).permit(:user_id, :medication_id, :doctor_id, :daily_dosage, :directions, :doses_in_container, :date.strftime("%F"))
+        params.require(:prescription).permit(:user_id, :medication_id, :doctor_id, :daily_dosage, :directions, :doses_in_container, :date)
     end
 end

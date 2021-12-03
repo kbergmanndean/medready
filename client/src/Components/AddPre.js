@@ -32,6 +32,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
         const preAdded= await res.json()
         
         if (res.ok){
+            console.log(newPre)
         console.log(preAdded)
         console.log(date)
         addNewPre(preAdded);

@@ -1,7 +1,7 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 
-function AddPre({med, doctors, prescriptions, setPrescriptions}){
+function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
     const [preDoc, setPreDoc] = useState(0)
     const [dose, setDose] = useState("")
     const [direct, setDirect] = useState("")
@@ -15,7 +15,8 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
         history(path);
     }
 
-    const addNewPre=(pre)=> {const newArray =[...prescriptions,pre]
+    const addNewPre=(pre)=> {
+    const newArray =[...prescriptions,pre]
     setPrescriptions(newArray)}
 
     const user_id=+localStorage.getItem("user_id")
@@ -30,11 +31,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
             body:JSON.stringify(newPre)
         })
         const preAdded= await res.json()
-        
         if (res.ok){
-            console.log(newPre)
-        console.log(preAdded)
-        console.log(date)
         addNewPre(preAdded);
         routeChange();
         } 

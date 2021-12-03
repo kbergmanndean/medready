@@ -35,7 +35,8 @@ useEffect(() => {
   async function fetchDocData() {
     const res = await fetch("https://medready.herokuapp.com/doctors");
     const docData = await res.json();
-    setDoctors(docData);
+    const userDocData = docData.filter((doc)=>doc.user_id==localStorage.getItem("user_id"))
+    setDoctors(userDocData)
   }
   async function fetchPreData(){
     const res=await fetch("https://medready.herokuapp.com/prescriptions")

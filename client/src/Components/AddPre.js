@@ -8,6 +8,19 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
     const [cont, setCont] = useState("")
     const [errors, setErrors] = useState([])
     const [date, setDate] = useState("")
+    const [state, setState]=useState([])
+
+    //this is to get rid of "can't perform a react state update on an unmounted component" error
+    useEffect(() => {
+        myFunction();
+        return () => {
+          setState([]); 
+        };
+    }, []);
+    
+    const myFunction = () => {
+        setState(['first','second'])
+    }
 
     let history = useNavigate();
     const routeChange = () =>{ 

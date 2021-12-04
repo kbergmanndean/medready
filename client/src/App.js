@@ -40,7 +40,7 @@ useEffect(() => {
   }
   async function fetchPreData(){
     const res=await fetch("https://medready.herokuapp.com/prescriptions")
-    const preData=await res.json()
+    const preData=await res.json();
     setPrescriptions(preData)
     console.log(preData)
   }

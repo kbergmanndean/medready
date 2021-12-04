@@ -10,4 +10,6 @@ class MedicationsController < ApplicationController
         med=Medication.find_by(id:params[:id])
         render json: med
     end
+
+
 end

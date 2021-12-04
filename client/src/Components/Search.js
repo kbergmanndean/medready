@@ -7,8 +7,6 @@ function Search({setMed, meds, user, setUser}){
     const handleSearch=(e)=>{setSearch(e.target.value)}
     const displayMeds=meds.length>0? meds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase())):meds
 
-   
-
     return(
         localStorage.getItem("user_id")?
     <div className="search-page">

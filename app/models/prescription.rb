@@ -8,5 +8,5 @@ class Prescription < ApplicationRecord
     validates :doses_in_container, presence: true, numericality: {only_integer: true}
     validates :doctor_id, presence: true 
     validates :medication_id, presence: true
-    # validates :date, presence: true
+    # validates :date_given, presence: true
 end

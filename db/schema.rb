@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_222237) do
     t.integer "doctor_id"
     t.integer "medication_id"
     t.integer "user_id"
-    t.date "date"
+    t.date "date_given"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -43,7 +43,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
             method:"POST",
             body:JSON.stringify(newPre)
         })
-        const preAdded= await res.json()
+        const preAdded= await res.json();
         if (res.ok){
         addNewPre(preAdded);
         console.log(newPre);

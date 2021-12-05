@@ -38,16 +38,16 @@ useEffect(() => {
     const userDocData = docData.filter((doc)=>doc.user_id==localStorage.getItem("user_id"))
     setDoctors(userDocData)
   }
-  // async function fetchPreData(){
-  //   const res=await fetch("https://medready.herokuapp.com/prescriptions")
-  //   const preData=await res.json();
-  //   setPrescriptions(preData)
-  //   console.log(preData)
-  // }
+  async function fetchPreData(){
+    const res=await fetch("https://medready.herokuapp.com/prescriptions")
+    const preData=await res.json();
+    setPrescriptions(preData)
+    console.log(preData)
+  }
   if (localStorage.getItem("user_id")){
   fetchDocData();
   fetchMedData();
-  // fetchPreData();
+  fetchPreData();
  
   } else {
     console.log("please log in")

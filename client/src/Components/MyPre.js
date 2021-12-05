@@ -26,15 +26,14 @@ function MyPre({pre, prescriptions, setPrescriptions}){
         date.setDate(date.getDate() + days);
         return date
     }
-    let date = new Date(pre.date_given)
+    let initialDate = new Date(pre.date_given)
+    let date = new Date(initialDate.getTime()-initialDate.getTimezoneOffset()*-60000);
     let count = (pre.daily_dosage)*(pre.doses_in_container)
     let today = new Date();
     // let todayFormat=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     if (date.addDays(count) !== today){
         alert(`Time to refill ${pre.generic_name}`)
         console.log(today)
-        console.log(date)
-        console.log(pre.date_given)
         console.log(date.addDays(count))
     }
 

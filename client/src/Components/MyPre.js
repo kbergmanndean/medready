@@ -28,13 +28,14 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     }
     let initialDate = new Date(pre.date_given)
     let date = new Date(initialDate.getTime()-initialDate.getTimezoneOffset()*-60000);
-    let count = (pre.daily_dosage)*(pre.doses_in_container)
-    let today = new Date();
+    let count = (pre.doses_in_container)/(pre.daily_dosage)
+    let today = new Date(new Date().toDateString());
+    let refillDate = new Date(date.addDays(count))
     // let todayFormat=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    if (date.addDays(count) !== today){
-        alert(`Time to refill ${pre.generic_name}`)
+    if (+refillDate == +today){
+        alert(`Time to refill ${pre.medication.generic_name}`)
         console.log(today)
-        console.log(date.addDays(count))
+        console.log(refillDate)
     }
 
 

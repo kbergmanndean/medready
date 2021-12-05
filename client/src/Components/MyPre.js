@@ -5,9 +5,10 @@ function MyPre({pre, prescriptions, setPrescriptions}){
    
     //format date from yyyy/mm/dd to mm/dd/yyyy
     function formatDate(inputDate){
-        let date= new Date(inputDate)
+        let initialDate= new Date(inputDate)
+        let date=new Date(initialDate.getTime()-initialDate.getTimezoneOffset()*-60000);
         let month=''+(date.getMonth()+1);
-        let day=''+(date.getDate()+1);
+        let day=''+(date.getDate());
         let year=date.getFullYear();
 
         if (month.length<2){

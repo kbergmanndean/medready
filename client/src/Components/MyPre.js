@@ -3,10 +3,11 @@ import React from "react"
 
 function MyPre({pre, prescriptions, setPrescriptions}){
    
+    //format date from yyyy/mm/dd to mm/dd/yyyy
     function formatDate(inputDate){
         let date= new Date(inputDate)
         let month=''+(date.getMonth()+1);
-        let day=''+(date.getDate());
+        let day=''+(date.getDate()+1);
         let year=date.getFullYear();
 
         if (month.length<2){
@@ -18,6 +19,24 @@ function MyPre({pre, prescriptions, setPrescriptions}){
         return [month,day,year].join('/')
     }
     let formattedDate=formatDate(pre.date_given)
+
+    Date.prototype.addDays = function (days) {
+        let date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date
+    }
+    let date = new Date(pre.date_given)
+    let count = (pre.daily_dosage)*(pre.doses_in_container)
+    let today = new Date();
+    // let todayFormat=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    if (date.addDays(count) !== today){
+        alert(`Time to refill ${pre.generic_name}`)
+        console.log(today)
+        console.log(date)
+        console.log(pre.date_given)
+        console.log(date.addDays(count))
+    }
+
 
     async function handleDelete(id){
         await fetch(`https://medready.herokuapp.com/prescriptions/${id}`,{

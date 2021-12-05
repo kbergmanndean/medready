@@ -38,7 +38,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
     async function handleSubmit(e){
         e.preventDefault();
         console.log(date)
-        const newPre={user_id:user_id,medication_id: med.id, doctor_id:preDoc, daily_dosage:dose, directions:direct, doses_in_container:cont, date:date }
+        const newPre={user_id:user_id,medication_id: med.id, doctor_id:preDoc, daily_dosage:dose, directions:direct, doses_in_container:cont, date_given:date }
         const res=await fetch("https://medready.herokuapp.com/prescriptions",{
             headers:{"Content-Type":"application/json"},
             method:"POST",

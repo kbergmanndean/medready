@@ -3,6 +3,22 @@ import React from "react"
 
 function MyPre({pre, prescriptions, setPrescriptions}){
    
+    function formatDate(inputDate){
+        let date= new Date(inputDate)
+        let month=''+(date.getMonth()+1);
+        let day=''+(date.getDate());
+        let year=date.getFullYear();
+
+        if (month.length<2){
+            month='0'+month;
+        }
+        if (day.length<2){
+            day='0'+day;
+        }
+        return [month,day,year].join('/')
+    }
+    let formattedDate=formatDate(pre.date_given)
+
     async function handleDelete(id){
         await fetch(`https://medready.herokuapp.com/prescriptions/${id}`,{
                 method:"DELETE",
@@ -29,7 +45,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
                 <br/>Doses in Container:{pre.doses_in_container}
                 <br/>Directions: {pre.directions}
                 <br/>Prescribing Doctor: {pre.doctor.name}, {pre.doctor.profession}
-                <br/>Date Filled: {pre.date_given}
+                <br/>Date Filled: {formattedDate}
                 </p>
                 <a className="btn btn-outline-dark" href={`/#/edit/${pre.id}`}>Edit</a> <button className="btn btn-outline-dark" onClick={()=>{handleDelete(pre.id)}}>Remove</button>
             </div> 

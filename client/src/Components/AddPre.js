@@ -89,7 +89,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
                     <input type="text" className="form-control" id="number-doses" value={cont} onChange={(e)=>setCont(parseInt(e.target.value))}/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="date">Date Prescribed</label>
+                    <label htmlFor="date">Date Filled</label>
                     <input type="date" className="form-control" id="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
                 </div>
                     <br/>

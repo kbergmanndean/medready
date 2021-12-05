@@ -29,7 +29,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
                 <br/>Doses in Container:{pre.doses_in_container}
                 <br/>Directions: {pre.directions}
                 <br/>Prescribing Doctor: {pre.doctor.name}, {pre.doctor.profession}
-                <br/>Date Prescribed: {pre.date_given}
+                <br/>Date Filled: {pre.date_given}
                 </p>
                 <a className="btn btn-outline-dark" href={`/#/edit/${pre.id}`}>Edit</a> <button className="btn btn-outline-dark" onClick={()=>{handleDelete(pre.id)}}>Remove</button>
             </div> 

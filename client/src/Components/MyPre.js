@@ -31,11 +31,16 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     let count = (pre.doses_in_container)/(pre.daily_dosage)
     let today = new Date(new Date().toDateString());
     let refillDate = new Date(date.addDays(count))
-    // let todayFormat=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let weekNotice = new Date(new Date().toDateString());
+    weekNotice.setDate(refillDate.getDate()-7)
     if (+refillDate == +today){
-        alert(`Time to refill ${pre.medication.generic_name}`)
+        alert(`Time to refill ${pre.medication.generic_name}!`)
         console.log(today)
         console.log(refillDate)
+        } else if (+weekNotice == +today){
+        alert(`In one week, you will be out of ${pre.medication.generic_name}!`)
+        console.log(weekNotice)
+        console.log(today)
     }
 
 

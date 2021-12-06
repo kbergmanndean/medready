@@ -26,6 +26,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
         date.setDate(date.getDate() + days);
         return date
     }
+
     let initialDate = new Date(pre.date_given)
     let date = new Date(initialDate.getTime()-initialDate.getTimezoneOffset()*-60000);
     let count = (pre.doses_in_container)/(pre.daily_dosage)
@@ -33,13 +34,13 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     let refillDate = new Date(date.addDays(count))
     let weekNotice = new Date(new Date().toDateString());
     weekNotice.setDate(refillDate.getDate()-7)
+
     if (+refillDate == +today){
         alert(`Time to refill ${pre.medication.generic_name}!`)
         } else if (+weekNotice == +today){
         alert(`In one week, you will be out of ${pre.medication.generic_name}!`)
         
     }
-
 
     async function handleDelete(id){
         await fetch(`https://medready.herokuapp.com/prescriptions/${id}`,{

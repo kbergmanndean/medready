@@ -20,6 +20,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
     
     const myFunction = () => {
         setState(['first','second'])
+        return state
     }
 
     let history = useNavigate();

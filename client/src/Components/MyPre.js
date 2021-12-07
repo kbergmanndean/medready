@@ -36,7 +36,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     weekNotice.setDate(refillDate.getDate()-7)
 
     if (+refillDate <= +today){
-       return <Alert/>
+       return <Alert pre={pre} today={today} refillDate={refillDate} weekNotice={weekNotice}/>
         // alert(`Time to refill ${pre.medication.generic_name}!`)
         // } else if (+weekNotice == +today){
         // alert(`In one week, you will be out of ${pre.medication.generic_name}!`)

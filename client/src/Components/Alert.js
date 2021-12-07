@@ -2,7 +2,9 @@ import React, {useState} from 'react'
 
 function Alert(){
     return(
-        <div>Alert</div>
+        <div>
+            <p>Alert</p>
+        </div>
     )
 }
 

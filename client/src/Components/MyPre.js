@@ -1,6 +1,6 @@
 import bottle from "../pictures/bottle4.png"
 import React from "react"
-
+import Alert from "./Alert.js"
 function MyPre({pre, prescriptions, setPrescriptions}){
    
     //format date from yyyy/mm/dd to mm/dd/yyyy
@@ -35,10 +35,11 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     let weekNotice = new Date(new Date().toDateString());
     weekNotice.setDate(refillDate.getDate()-7)
 
-    if (+refillDate == +today){
-        alert(`Time to refill ${pre.medication.generic_name}!`)
-        } else if (+weekNotice == +today){
-        alert(`In one week, you will be out of ${pre.medication.generic_name}!`)
+    if (+refillDate <= +today){
+       return <Alert/>
+        // alert(`Time to refill ${pre.medication.generic_name}!`)
+        // } else if (+weekNotice == +today){
+        // alert(`In one week, you will be out of ${pre.medication.generic_name}!`)
         
     }
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Alert({pre, refillDate, today, weekNotice, alert, setAlert, onX}){
+function Alert({pre, refillDate, today, onOkay}){
     return(
         <div>
         {(+refillDate <= +today)?
@@ -11,7 +11,7 @@ function Alert({pre, refillDate, today, weekNotice, alert, setAlert, onX}){
         <div>
             <p>Alert! In one week, you will be out of {pre.medication.generic_name}!</p>
         </div>}
-        <button onClick={onX}>Ok</button>
+        <button onClick={onOkay}>Ok</button>
         </div>
     )
 }

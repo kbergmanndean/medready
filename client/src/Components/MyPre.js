@@ -5,7 +5,7 @@ import Alert from "./Alert.js"
 function MyPre({pre, prescriptions, setPrescriptions}){
    const [alert, setAlert] = useState(true)
 
-    function onX(){
+    function onOkay(){
         setAlert(false)
         console.log(alert)
     }
@@ -54,8 +54,8 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     const user_id=+localStorage.getItem("user_id")
 
     return(
-        ((+refillDate <= +today)||(+weekNotice == +today))?
-            <Alert pre={pre} today={today} refillDate={refillDate} weekNotice={weekNotice} alert={alert} setAlert={setAlert} onX={onX}/>    
+        (((+refillDate <= +today)||(+weekNotice == +today))&&(alert==true))?
+            <Alert pre={pre} today={today} refillDate={refillDate} onOkay={onOkay}/>    
         :
         <div className="card" style={{width: "18rem"}}>
             {pre.user_id===user_id?

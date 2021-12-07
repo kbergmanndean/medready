@@ -1,17 +1,18 @@
 import React, {useState} from 'react'
 
-function Alert({pre, refillDate, today, weekNotice}){
+function Alert({pre, refillDate, today, weekNotice, alert, setAlert, onX}){
     return(
-        (+refillDate <= +today)?
+        <div>
+        {(+refillDate <= +today)?
         <div>
             <p>Alert! You are out of {pre.medication.generic_name}</p>
         </div>
-        :null
-        (+weekNotice == +today)?
+        :
         <div>
             <p>Alert! In one week, you will be out of {pre.medication.generic_name}!</p>
+        </div>}
+        <button onClick={onX}>Ok</button>
         </div>
-        :null
     )
 }
 

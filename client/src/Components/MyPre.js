@@ -1,8 +1,15 @@
 import bottle from "../pictures/bottle4.png"
-import React from "react"
+import React, {useState} from "react"
 import Alert from "./Alert.js"
+
 function MyPre({pre, prescriptions, setPrescriptions}){
-   
+   const [alert, setAlert] = useState(true)
+
+    function onX(){
+        setAlert(false)
+        console.log(alert)
+    }
+
     //format date from yyyy/mm/dd to mm/dd/yyyy
     function formatDate(inputDate){
         let initialDate= new Date(inputDate)
@@ -35,14 +42,6 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     let weekNotice = new Date(new Date().toDateString());
     weekNotice.setDate(refillDate.getDate()-7)
 
-    if (+refillDate <= +today){
-       return <Alert pre={pre} today={today} refillDate={refillDate} weekNotice={weekNotice}/>
-        // alert(`Time to refill ${pre.medication.generic_name}!`)
-        // } else if (+weekNotice == +today){
-        // alert(`In one week, you will be out of ${pre.medication.generic_name}!`)
-        
-    }
-
     async function handleDelete(id){
         await fetch(`https://medready.herokuapp.com/prescriptions/${id}`,{
                 method:"DELETE",
@@ -55,7 +54,9 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     const user_id=+localStorage.getItem("user_id")
 
     return(
-        
+        ((+refillDate <= +today)||(+weekNotice == +today))?
+            <Alert pre={pre} today={today} refillDate={refillDate} weekNotice={weekNotice} alert={alert} setAlert={setAlert} onX={onX}/>    
+        :
         <div className="card" style={{width: "18rem"}}>
             {pre.user_id===user_id?
             <>

@@ -48,7 +48,6 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
         const preAdded= await res.json();
         if (res.ok){
         addNewPre(preAdded);
-        
         routeChange();
         } 
         setErrors(preAdded.error) 

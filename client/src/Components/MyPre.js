@@ -5,6 +5,7 @@ import Alert from "./Alert.js"
 function MyPre({pre, prescriptions, setPrescriptions}){
    const [alert, setAlert] = useState(true)
 
+   //function for pressing ok button on alert
     function onOkay(){
         setAlert(false)
         console.log(alert)

@@ -55,6 +55,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     const user_id=+localStorage.getItem("user_id")
 
     return(
+        
         (((+refillDate <= +today)||(+weekNotice == +today))&&(alert==true))?
             <Alert pre={pre} today={today} refillDate={refillDate} onOkay={onOkay}/>    
         :
@@ -78,9 +79,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
             </>
             : null}
         </div>
-        
-        
-        
+          
     )
 }
 export default MyPre

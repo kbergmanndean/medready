@@ -104,3 +104,13 @@ margin:auto;
 .med-li{
   margin:10pt;
 }
+/* .pre-card-container{
+  border: 10px solid black;
+} */
+.alert{
+  background-color:lightyellow;
+  margin:10pt;
+  margin-left:40pt;
+  border:0pt;
+  width:200pt;
+}

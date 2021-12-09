@@ -35,7 +35,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
 
     const user_id=+localStorage.getItem("user_id")
     
-
+        //add validation errors to addpre page
     async function handleSubmit(e){
         e.preventDefault();
         console.log(date)
@@ -51,6 +51,8 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
         routeChange();
         } 
         setErrors(preAdded.error) 
+        console.log(preAdded.error)
+        
     }
     
 

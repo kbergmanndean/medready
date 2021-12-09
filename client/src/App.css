@@ -108,9 +108,13 @@ margin:auto;
   border: 10px solid black;
 } */
 .alert{
-  background-color:lightyellow;
+  /* background-color:lightyellow; */
+  /* background-color:lavender; */
   margin:10pt;
   margin-left:40pt;
   border:0pt;
   width:200pt;
+}
+.alert-word{
+color:red;
 }

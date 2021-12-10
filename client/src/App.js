@@ -39,7 +39,6 @@ function App() {
       const res=await fetch("https://medready.herokuapp.com/prescriptions")
       const preData=await res.json();
       setPrescriptions(preData)
-      console.log(preData)
     }
     if (localStorage.getItem("user_id")){
       fetchDocData();

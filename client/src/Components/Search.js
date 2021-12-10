@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import LoginAuth from './LoginAuth'
 
-function Search({setMed, meds, user, setUser}){
+function Search({meds, user, setUser}){
     const [search, setSearch]=useState("")
 
     const handleSearch=(e)=>{setSearch(e.target.value)}
@@ -17,7 +17,7 @@ function Search({setMed, meds, user, setUser}){
             <button className="btn btn-outline-dark" type="submit">Search</button>
         </form>
         <ul>
-        {displayMeds.length>0?displayMeds.map((m)=>{return(<li className="med-li" key={m.id}>Generic Name: {m.generic_name}, Brand Name: {m.brand_name}, Dosage: {m.dosage} <a onClick={()=>setMed(m)} href={`/#/medications/${m.id}`} className="btn btn-outline-dark">Add Prescription</a></li>)}):null}
+        {displayMeds.length>0?displayMeds.map((m)=>{return(<li className="med-li" key={m.id}>Generic Name: {m.generic_name}, Brand Name: {m.brand_name}, Dosage: {m.dosage} <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">Add Prescription</a></li>)}):null}
         </ul>
     </div>
     : <LoginAuth user={user} setUser={setUser}/>

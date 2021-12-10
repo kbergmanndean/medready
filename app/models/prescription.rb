@@ -3,7 +3,7 @@ class Prescription < ApplicationRecord
     belongs_to :medication
     belongs_to :user
 
-    validates :daily_dosage, presence: true, numericality: true
+    validates :daily_dosage, presence: true
     validates :directions, presence: true 
     validates :doses_in_container, presence: true, numericality: true
     validates :doctor_id, presence: true 

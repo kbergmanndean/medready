@@ -5,8 +5,8 @@ class Prescription < ApplicationRecord
 
     validates :daily_dosage, presence: true, numericality: true
     validates :directions, presence: true 
-    validates :doses_in_container, presence: true, numericality: {only_integer: true}
+    validates :doses_in_container, presence: true, numericality: true
     validates :doctor_id, presence: true 
     validates :medication_id, presence: true
-    # validates :date_given, presence: true
+    validates :date_given, presence: true
 end

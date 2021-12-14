@@ -10,6 +10,7 @@ function Edit({doctors,pre}){
     const [doses, setDoses] = useState(pre.doses_in_container)
     const [currentMedId, setCurrentMedId] = useState(pre.medication.id)
     const [currentDocId, setCurrentDocId] = useState(pre.doctor.id)
+    const [date, setDate] = useState(pre.date_given)
     const [errors, setErrors]=useState([])
 
     // const routeChange = () =>{ 
@@ -18,7 +19,7 @@ function Edit({doctors,pre}){
 
     async function handleSubmit(e){
         e.preventDefault();
-        const editedPre={medication_id:currentMedId, doctor_id:currentDocId, daily_dosage:dosage, directions:directions, doses_in_container:doses}
+        const editedPre={medication_id:currentMedId, doctor_id:currentDocId, daily_dosage:dosage, directions:directions, doses_in_container:doses, date_given:date}
         const res=await fetch (`https://medready.herokuapp.com/prescriptions/${pre.id}`,{
             method: 'PATCH',
             headers:{'Content-Type': 'application/json'},
@@ -31,6 +32,7 @@ function Edit({doctors,pre}){
             setDoses("")
             alert("form submitted")
             setErrors([])
+            setDate("")
             // routeChange();
         }else{
             setErrors(edited.error)
@@ -68,6 +70,10 @@ function Edit({doctors,pre}){
                 <div className="form-group">
                     <label htmlFor="number-doses">Doses in Container</label>
                     <input type="text" className="form-control" id="number-doses" onChange={(e)=>setDoses(e.target.value)} value={doses}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="date">Date Filled</label>
+                    <input type="date" className="form-control" id="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
                 </div>
                     <br/>
                     <button type="submit" className="btn btn-outline-dark form-submit">Submit</button>

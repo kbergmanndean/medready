@@ -8,7 +8,9 @@ function MyPre({pre, prescriptions, setPrescriptions}){
    //function for pressing ok button on alert
     function onOkay(){
         setAlert(false)
-        console.log(alert)
+        console.log(+today)
+        console.log(+refillDate)
+        console.log(daysLeft)
     }
 
     //format date from yyyy/mm/dd to mm/dd/yyyy
@@ -47,7 +49,18 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     //create date for days meds run out using addDays method and count variable
     let refillDate = new Date(date.addDays(count))
     //create variable for days left of meds, using refill date minus today
-    let daysLeft = refillDate.getDate() - today.getDate()
+   function adjustTimeZone(date){
+       let result=new Date (date);
+       result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+       return result;
+   }
+   function daysBetween(start,end){
+       let msPerDay = 24 * 60 * 60 * 1000;
+       return (adjustTimeZone(end) - adjustTimeZone(start)) / msPerDay;
+   }
+   let daysLeft = daysBetween(today, refillDate)
+    
+    
 
     async function handleDelete(id){
         await fetch(`https://medready.herokuapp.com/prescriptions/${id}`,{

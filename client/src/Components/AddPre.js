@@ -35,7 +35,6 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
 
     const user_id=+localStorage.getItem("user_id")
     
-        //add validation errors to addpre page
     async function handleSubmit(e){
         e.preventDefault();
         const newPre={user_id:user_id,medication_id: med.id, doctor_id:preDoc, daily_dosage:dose, directions:direct, doses_in_container:cont, date_given:date }
@@ -52,24 +51,8 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
             setErrors(preAdded.error)
             console.log(errors)
         }
-        
-        // if (res.status == 200){
-        //     const preAdded= await res.json();
-        //     addNewPre(preAdded);
-        //     routeChange();
-        // }
-        // else{
-        //     setErrors(res.error) 
-        //     console.log(res.errors)
-        // }
-        // if (!res.ok){
-        // console.log("error")
-        // } 
-        
-        
     }
     
-
     return(
         <div className="addpre"> 
         <div className="addpre-inner">

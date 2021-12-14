@@ -55,12 +55,12 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     const user_id=+localStorage.getItem("user_id")
 
     return(
-        
+        pre.user_id===user_id?
+            
         (((+refillDate <= +today)||(+weekNotice == +today))&&(alert==true))?
             <Alert pre={pre} today={today} refillDate={refillDate} onOkay={onOkay}/>    
-        :
+        : 
         <div className="card" style={{width: "18rem"}}>
-            {pre.user_id===user_id?
             <>
             <img src={bottle} className="card-img-top bottle" alt="..."/>
             <div className="card-body">
@@ -77,8 +77,8 @@ function MyPre({pre, prescriptions, setPrescriptions}){
                 <a className="btn btn-outline-dark" href={`/#/edit/${pre.id}`}>Edit</a> <button className="btn btn-outline-dark" onClick={()=>{handleDelete(pre.id)}}>Remove</button>
             </div> 
             </>
-            : null}
         </div>
+        : null
           
     )
 }

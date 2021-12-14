@@ -22,7 +22,7 @@ function Navbar({user, setUser}){
 
     function handleDelete(){
         async function destroy(){
-            const res=await fetch(`https://medready.herokuapp.com/users/${user_id}`,{
+            await fetch(`https://medready.herokuapp.com/users/${user_id}`,{
                 method:"DELETE"
             })
                 

@@ -1,6 +1,10 @@
 import React from 'react'
 
 function Alert({pre, refillDate, today, onOkay}){
+
+    //alert one week out and then each day after.
+
+
     return(
         <div className="alert">
             {(+refillDate <= +today)?

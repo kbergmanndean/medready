@@ -2,8 +2,6 @@ import React from 'react'
 
 function Alert({pre, onOkay, daysLeft}){
 
-    //alert one week out and then each day after.
-
     return(
         <div className="alert">
             {daysLeft<=0?
@@ -14,7 +12,7 @@ function Alert({pre, onOkay, daysLeft}){
             :
             <div>
                 <h1 className="alert-word">Alert!</h1>
-                <p>In {daysLeft} days, you will be out of {pre.medication.generic_name}!</p>
+                <p>In <span className="days-left">{daysLeft}</span> days, you will be out of {pre.medication.generic_name}</p>
             </div>}
             <button className="btn btn-outline-dark" onClick={onOkay}>Ok</button>
         </div>

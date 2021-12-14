@@ -116,5 +116,10 @@ margin:auto;
   width:200pt;
 }
 .alert-word{
-color:red;
+  color:red;
+  font-weight:bold;
+}
+.days-left{
+  font-weight:bold;
+  font-size:18pt;
 }

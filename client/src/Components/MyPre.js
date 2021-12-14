@@ -29,19 +29,28 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     }
     let formattedDate=formatDate(pre.date_given)
 
+    //function creating method addDays which will add count to date_given to find refill date
     Date.prototype.addDays = function (days) {
         let date = new Date(this.valueOf());
         date.setDate(date.getDate() + days);
         return date
     }
 
+    //create Date of initial date_given of prescription
     let initialDate = new Date(pre.date_given)
+    //format initial date to account for timezones
     let date = new Date(initialDate.getTime()-initialDate.getTimezoneOffset()*-60000);
+    //create variable count for doses in container divided by daily dosage to calculate how many days until refill
     let count = (pre.doses_in_container)/(pre.daily_dosage)
+    //create Date for today's date
     let today = new Date(new Date().toDateString());
+    //create date for days meds run out using addDays method and count variable
     let refillDate = new Date(date.addDays(count))
+    //create variable for days left of meds, using refill date minus today
+    let daysLeft = refillDate.getDate() - today.getDate()
+    //create Date for refill date minus days left
     let weekNotice = new Date(new Date().toDateString());
-    weekNotice.setDate(refillDate.getDate()-7)
+    weekNotice.setDate(refillDate.getDate()-daysLeft)
 
     async function handleDelete(id){
         await fetch(`https://medready.herokuapp.com/prescriptions/${id}`,{
@@ -56,12 +65,10 @@ function MyPre({pre, prescriptions, setPrescriptions}){
 
     return(
         pre.user_id===user_id?
-            
         (((+refillDate <= +today)||(+weekNotice == +today))&&(alert==true))?
             <Alert pre={pre} today={today} refillDate={refillDate} onOkay={onOkay}/>    
         : 
         <div className="card" style={{width: "18rem"}}>
-            <>
             <img src={bottle} className="card-img-top bottle" alt="..."/>
             <div className="card-body">
                 <p className="card-text">
@@ -76,10 +83,8 @@ function MyPre({pre, prescriptions, setPrescriptions}){
                 </p>
                 <a className="btn btn-outline-dark" href={`/#/edit/${pre.id}`}>Edit</a> <button className="btn btn-outline-dark" onClick={()=>{handleDelete(pre.id)}}>Remove</button>
             </div> 
-            </>
         </div>
-        : null
-          
+        : null  
     )
 }
 export default MyPre

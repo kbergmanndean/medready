@@ -13,11 +13,11 @@ class PrescriptionsController < ApplicationController
     end
 
     def create
-        new_script=Prescription.create!(script_params)
+        new_script=Prescription.create(script_params)
         if new_script.valid?
             render json:new_script, include: [:medication, :doctor], status: :created
         else
-            render json:{error:new_script.errors.full_messages}
+            render json:{error:new_script.errors.full_messages}, status: :unprocessable_entity
         end
     end
 

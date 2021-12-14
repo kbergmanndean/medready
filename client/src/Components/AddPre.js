@@ -36,23 +36,36 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
     const user_id=+localStorage.getItem("user_id")
     
         //add validation errors to addpre page
-        //make dosage allowed to be a decimal
     async function handleSubmit(e){
         e.preventDefault();
-        console.log(date)
         const newPre={user_id:user_id,medication_id: med.id, doctor_id:preDoc, daily_dosage:dose, directions:direct, doses_in_container:cont, date_given:date }
         const res=await fetch("https://medready.herokuapp.com/prescriptions",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
             body:JSON.stringify(newPre)
-        })
-        const preAdded= await res.json();
+        });
+        const preAdded=await res.json();
         if (res.ok){
-        addNewPre(preAdded);
-        routeChange();
-        } 
-        setErrors(preAdded.error) 
-        console.log(preAdded.error)
+            addNewPre(preAdded);
+            routeChange();
+        } else {
+            setErrors(preAdded.error)
+            console.log(errors)
+        }
+        
+        // if (res.status == 200){
+        //     const preAdded= await res.json();
+        //     addNewPre(preAdded);
+        //     routeChange();
+        // }
+        // else{
+        //     setErrors(res.error) 
+        //     console.log(res.errors)
+        // }
+        // if (!res.ok){
+        // console.log("error")
+        // } 
+        
         
     }
     

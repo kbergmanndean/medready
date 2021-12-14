@@ -16,7 +16,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
         return () => {
           setState([]); 
         };
-    }, []);
+    },[]);
     
     const myFunction = () => {
         setState(['first','second'])
@@ -36,6 +36,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
     const user_id=+localStorage.getItem("user_id")
     
         //add validation errors to addpre page
+        //make dosage allowed to be a decimal
     async function handleSubmit(e){
         e.preventDefault();
         console.log(date)
@@ -77,7 +78,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
                 </div>
                 <div className="form-group">
                     <label htmlFor="dosage">Prescribed Daily Dosage</label>
-                    <input type="text" className="form-control" id="dosage" value={dose} onChange={(e)=>setDose(parseFloat(e.target.value))}/>
+                    <input type="number" className="form-control" id="dosage" value={dose} onChange={(e)=>setDose(parseFloat(e.target.value))}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="directions">Directions</label>
@@ -85,7 +86,7 @@ function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
                 </div>
                 <div className="form-group">
                     <label htmlFor="number-doses">Doses in Container</label>
-                    <input type="text" className="form-control" id="number-doses" value={cont} onChange={(e)=>setCont(parseInt(e.target.value))}/>
+                    <input type="number" className="form-control" id="number-doses" value={cont} onChange={(e)=>setCont(parseInt(e.target.value))}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="date">Date Filled</label>

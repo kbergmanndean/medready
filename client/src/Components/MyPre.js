@@ -48,9 +48,6 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     let refillDate = new Date(date.addDays(count))
     //create variable for days left of meds, using refill date minus today
     let daysLeft = refillDate.getDate() - today.getDate()
-    //create Date for refill date minus days left
-    let weekNotice = new Date(new Date().toDateString());
-    weekNotice.setDate(refillDate.getDate()-daysLeft)
 
     async function handleDelete(id){
         await fetch(`https://medready.herokuapp.com/prescriptions/${id}`,{
@@ -65,8 +62,8 @@ function MyPre({pre, prescriptions, setPrescriptions}){
 
     return(
         pre.user_id===user_id?
-        (((+refillDate <= +today)||(+weekNotice == +today))&&(alert==true))?
-            <Alert pre={pre} today={today} refillDate={refillDate} onOkay={onOkay}/>    
+        (daysLeft <= 7 && alert == true)?
+            <Alert daysLeft={daysLeft} pre={pre} onOkay={onOkay}/>    
         : 
         <div className="card" style={{width: "18rem"}}>
             <img src={bottle} className="card-img-top bottle" alt="..."/>

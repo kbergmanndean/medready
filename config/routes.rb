@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :users, only:[:show, :create, :index, :destroy]
   resources :prescriptions
-  resources :medications, only: [:index,:show]
+  resources :medications, only: [:index, :show, :create]
   resources :doctors, only: [:index, :show, :create, :destroy]
   post "/log_in", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

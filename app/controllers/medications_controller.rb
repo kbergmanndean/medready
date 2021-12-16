@@ -11,5 +11,20 @@ class MedicationsController < ApplicationController
         render json: med
     end
 
+    def create
+        new_med=Medication.create(med_params)
+        if new_med.valid?
+            render json:new_med
+        else
+            render json: {error:new_med.errors.full_messages}, status: :unprocessable_entity
+        end
+    end
+
+    private
+    
+    def med_params
+        params.require(:medication).permit(:generic_name, :brand_name, :dosage)
+    end
+
 
 end

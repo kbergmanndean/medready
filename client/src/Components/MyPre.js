@@ -8,9 +8,6 @@ function MyPre({pre, prescriptions, setPrescriptions}){
    //function for pressing ok button on alert
     function onOkay(){
         setAlert(false)
-        console.log(+today)
-        console.log(+refillDate)
-        console.log(daysLeft)
     }
 
     //format date from yyyy/mm/dd to mm/dd/yyyy

@@ -4,7 +4,7 @@ import {Routes,Route} from "react-router-dom"
 import Home from "./Components/Home"
 import Search from "./Components/Search"
 import AddDoc from "./Components/AddDoc"
-import AddMed from "./Components/AddMed"
+// import AddMed from "./Components/AddMed"
 import AddPre from "./Components/AddPre"
 import Doctors from "./Components/Doctors"
 import Edit from "./Components/Edit"
@@ -61,7 +61,7 @@ function App() {
           <Route exact path="/" element={<Home user={user} prescriptions={prescriptions} setPrescriptions={setPrescriptions} page={page} setPage={setPage}/>}/>
           <Route exact path="/doctors" element={<Doctors setUser={setUser} user={user} doctors={doctors} setDoctors={setDoctors}/>}/>
           <Route exact path="/add_doc" element={<AddDoc setUser={setUser} user={user} setDoctors={setDoctors} doctors={doctors}/>}/>
-          <Route exact path="/add_med" element={<AddMed/>}/>
+          {/* <Route exact path="/add_med" element={<AddMed setUser={setUser} user={user} meds={meds} setMeds={setMeds}/>}/> */}
           {prescriptions? prescriptions.map(pre=>{return <Route user={user} key={pre.id} exact path={`/edit/${pre.id}`} element={<Edit doctors={doctors} pre={pre} page={page} setPage={setPage}/>}/>}):null}
           {meds? meds.map(item=>{return <Route user={user} key={item.id} exact path={`/medications/${item.id}`} element={<AddPre key={item.id} med={item} doctors={doctors} prescriptions={prescriptions} setPrescriptions={setPrescriptions} isMounted={isMounted}/>}/>}):null}
           <Route exact path="/login" element={<LoginAuth user={user} setUser={setUser}/>}/> 

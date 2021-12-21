@@ -1,6 +1,6 @@
-class AddedMeds < ActiveRecord::Migration[6.1]
+class CreateAddedMedications < ActiveRecord::Migration[6.1]
   def change
-    create_table :medications do |t|
+    create_table :added_medications do |t|
       t.string :generic_name
       t.string :dosage
       t.string :brand_name

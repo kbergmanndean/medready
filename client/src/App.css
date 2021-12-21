@@ -74,18 +74,18 @@
 ul{
   list-style-type: none;
 }
-.addpre,.addDoc,.edit{
+.addpre, .addDoc, .edit, .addmed{
 width:50%;
 margin:auto;
 /* border:thin solid black; */
 }
-.addpre-inner{
+.addpre-inner, .addmed-inner{
   width:75%;
   margin:auto;
 } 
-.addDoc{
-  height:430pt;
-}
+.addmed{
+  height:400pt;
+} 
 .doctor-form{
   margin-right:100pt;
   margin-left:100pt;

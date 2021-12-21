@@ -9,11 +9,9 @@ function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
 
 
     const addNewMed = medAdded => {
-        const newArray = [...meds, medAdded]
         const newMedsArray = [...addedMeds, medAdded]
-        setMeds(newArray);
         setAddedMeds(newMedsArray);
-        console.log(addedMeds)
+        setAllMeds([...allMeds, medAdded])
     }
 
     const user_id=+localStorage.getItem("user_id")

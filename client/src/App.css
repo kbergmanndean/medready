@@ -7,7 +7,6 @@
 .page-footer{
   background-color:#f7c9ca;
   bottom:0;
-  
 }
 .home,.login, .search-page,.addpre,.addDoc,.edit{
   position:relative;
@@ -43,6 +42,8 @@
   font-family: "Comfortaa";
   font-size:30pt;
   padding-top:10pt;
+  color:black;
+  text-decoration:none;
 }
 
 .navbar{
@@ -100,6 +101,9 @@ margin:auto;
   margin:10pt;
   margin-left:100pt;
   margin-right:100pt;
+}
+.filter{
+  margin:10pt;
 }
 .med-li{
   margin:10pt;

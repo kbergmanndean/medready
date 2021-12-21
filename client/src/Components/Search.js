@@ -9,8 +9,6 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
     const handleSearch=(e)=>{setSearch(e.target.value)}
     let displayMeds=allMeds.length>0? allMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase())):allMeds
     let displayAddedMeds = addedMeds
-    // meds.length>0? meds.filter(m=>{(m.user_id==user_id) && (m.generic_name.toLowerCase().includes(search.toLowerCase()))}): 
-    // meds.filter(m=>m.user_id==user_id)
 
     function filterAdded(){
         setFilterOn(!filterOn)
@@ -31,9 +29,10 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
         user_id?
     <div className="search-page">
         <br/>
-        <h1 className="subhead">Search Medications</h1>
-        <a href="/#/add_med">Don't see your medication?</a>
-        <button onClick = {filterAdded}>Filter by Medications I added</button>
+        <a href="/#/search" className="subhead">Search Medications</a>
+        <br/>
+        <a href="/#/add_med" className="btn btn-outline-dark" >Don't see your medication?</a>
+        <button className="btn btn-outline-dark filter" onClick = {filterAdded}>Filter by Medications I added</button>
         <form className="d-flex search">
             <input onChange={handleSearch} className="form-control me-2" type="search" placeholder="Search by Generic Name" aria-label="Search"/>
             <button className="btn btn-outline-dark" type="submit">Search</button>

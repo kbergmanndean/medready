@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :users, only:[:show, :create, :index, :destroy]
+  resources :users, only: [:index, :show, :create, :destroy]
   resources :prescriptions
-  resources :medications, only: [:index, :show, :create]
+  resources :medications, only: [:index, :show, :create, :destroy]
+  resources :added_medications, only: [:index, :show, :create]
   resources :doctors, only: [:index, :show, :create, :destroy]
   post "/log_in", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

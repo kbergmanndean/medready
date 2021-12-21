@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 
-function AddMed({user, setUser, meds, setMeds}){
+function AddMed({addedMeds, setAddedMeds, meds, setMeds}){
     const [brandName, setBrandName] = useState("")
     const [genericName, setGenericName] = useState("")
     const [dosage, setDosage] = useState("")
@@ -17,12 +17,21 @@ function AddMed({user, setUser, meds, setMeds}){
 
     async function handleSubmit(e){
         e.preventDefault();
-        const newMed={user_id: user_id, brand_name: brandName, generic_name: genericName, dosage: dosage}
-        const res=await fetch("https://medready.herokuapp.com/added_medications",{
+        const newMed = {user_id: user_id, brand_name: brandName, generic_name: genericName, dosage: dosage}
+        const res = await fetch("https://medready.herokuapp.com/added_medications",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
             body:JSON.stringify(newMed)
         });
+        const medAdded = await res.json();
+        if (res.ok){
+            addNewMed(medAdded);
+            console.log(medAdded)
+            // routeChange();
+        } else {
+            setErrors(medAdded.error)
+            console.log(errors)
+        }
      
     }
 

@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import LoginAuth from './LoginAuth'
 
-function Search({meds, user, setUser}){
+function Search({addedMeds, setAddedMeds, meds, user, setUser}){
     const [search, setSearch]=useState("")
 
     const handleSearch=(e)=>{setSearch(e.target.value)}

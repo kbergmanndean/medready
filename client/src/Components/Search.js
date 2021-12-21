@@ -8,7 +8,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
     const user_id = localStorage.getItem("user_id")
     const handleSearch=(e)=>{setSearch(e.target.value)}
     let displayMeds=allMeds.length>0? allMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase())):allMeds
-    let displayAddedMeds = addedMeds
+    let displayAddedMeds = addedMeds.length>0? addedMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase())):addedMeds
 
     function filterAdded(){
         setFilterOn(!filterOn)
@@ -24,6 +24,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
             setAllMeds(filteredAddedMeds.concat(meds))
             })
     }
+    //right now remove button only shows up on added med when its on filter
 
     return(
         user_id?
@@ -32,7 +33,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
         <a href="/#/search" className="subhead">Search Medications</a>
         <br/>
         <a href="/#/add_med" className="btn btn-outline-dark" >Don't see your medication?</a>
-        <button className="btn btn-outline-dark filter" onClick = {filterAdded}>Filter by Medications I added</button>
+        <button className="btn btn-outline-dark filter" onClick = {filterAdded}>Filter by medications I added</button>
         <form className="d-flex search">
             <input onChange={handleSearch} className="form-control me-2" type="search" placeholder="Search by Generic Name" aria-label="Search"/>
             <button className="btn btn-outline-dark" type="submit">Search</button>

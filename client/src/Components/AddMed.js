@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 
-function AddMed({addedMeds, setAddedMeds, meds, setMeds}){
+function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
     const [brandName, setBrandName] = useState("")
     const [genericName, setGenericName] = useState("")
     const [dosage, setDosage] = useState("")

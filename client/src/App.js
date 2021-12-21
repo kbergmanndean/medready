@@ -21,7 +21,7 @@ function App() {
   const [prescriptions, setPrescriptions]=useState([])
   const [page, setPage]=useState("")
   const [user, setUser]=useState(null)
-  const [addedMeds, setAddedMeds]=([])
+  const [addedMeds, setAddedMeds]=useState([])
 
   let isMounted
 
@@ -30,6 +30,11 @@ function App() {
       const res = await fetch("https://medready.herokuapp.com/medications");
       const medData = await res.json();
       setMeds(medData);
+    }
+    async function fetchAddedMedData() {
+      const res = await fetch("https://medready.herokuapp.com/added_medications");
+      const addedMedData = await res.json();
+      setAddedMeds(addedMedData);
     }
     async function fetchDocData() {
       const res = await fetch("https://medready.herokuapp.com/doctors");
@@ -46,6 +51,7 @@ function App() {
       fetchDocData();
       fetchMedData();
       fetchPreData();
+      fetchAddedMedData();
 
     } else {
       console.log("please log in")

@@ -8,11 +8,22 @@ function Search({addedMeds, setAddedMeds, meds, user, setUser}){
     const user_id = localStorage.getItem("user_id")
     const handleSearch=(e)=>{setSearch(e.target.value)}
     let displayMeds=meds.length>0? meds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase())):meds
-
+    let displayAddedMeds = addedMeds
+    // meds.length>0? meds.filter(m=>{(m.user_id==user_id) && (m.generic_name.toLowerCase().includes(search.toLowerCase()))}): 
+    // meds.filter(m=>m.user_id==user_id)
 
     function filterAdded(){
         setFilterOn(!filterOn)
-        console.log(filterOn)
+    }
+
+    async function removeMed(id){
+        await fetch(`https://medready.herokuapp.com/added_medications/${id}`,{
+            method:"DELETE",
+        })
+            .then(()=>{
+            const filteredAddedMeds = addedMeds.filter(med=>med.id!==id)
+            setAddedMeds(filteredAddedMeds)
+            })
     }
 
     return(
@@ -27,7 +38,7 @@ function Search({addedMeds, setAddedMeds, meds, user, setUser}){
             <button className="btn btn-outline-dark" type="submit">Search</button>
         </form>
         <ul>  
-            {filterOn? addedMeds.map(m=>{return(<li className="med-li" key={m.id}>Generic Name: {m.generic_name}, Brand Name: {m.brand_name}, Dosage: {m.dosage} <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">Add Prescription</a></li>)}):
+            {filterOn ? displayAddedMeds.map(m=>{return(<li className="med-li" key={m.id}>Generic Name: {m.generic_name}, Brand Name: {m.brand_name}, Dosage: {m.dosage} <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">Add Prescription</a><button className="btn btn-outline-dark" onClick={()=>removeMed(m.id)}>Remove</button></li>)}):
         displayMeds.length>0?displayMeds.map((m)=>{return(<li className="med-li" key={m.id}>Generic Name: {m.generic_name}, Brand Name: {m.brand_name}, Dosage: {m.dosage} <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">Add Prescription</a></li>)}):null}
         </ul>
     </div>

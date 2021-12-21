@@ -20,6 +20,12 @@ class AddedMedicationsController < ApplicationController
         end
     end
 
+    def destroy
+        delete_med=AddedMedication.find_by(id:params[:id])
+        delete_med.destroy
+        head:no_content
+    end
+
     private
     
     def added_med_params

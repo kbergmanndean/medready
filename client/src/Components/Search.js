@@ -12,7 +12,7 @@ function Search({meds, user, setUser}){
     <div className="search-page">
         <br/>
         <h1 className="subhead">Search Medications</h1>
-        <a href="/add_med">Don't see your medication?</a>
+        <a href="/#/add_med">Don't see your medication?</a>
         <form className="d-flex search">
             <input onChange={handleSearch} className="form-control me-2" type="search" placeholder="Search by Generic Name" aria-label="Search"/>
             <button className="btn btn-outline-dark" type="submit">Search</button>

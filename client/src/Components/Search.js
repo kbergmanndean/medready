@@ -23,6 +23,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
             .then(()=>{
             const filteredAddedMeds = addedMeds.filter(med=>med.id!==id)
             setAddedMeds(filteredAddedMeds)
+            setAllMeds(filteredAddedMeds.concat(meds))
             })
     }
 

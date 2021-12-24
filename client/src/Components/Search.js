@@ -34,7 +34,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
         <a href="/#/search" className="subhead">Search Medications</a>
         <br/>
         <a href="/#/add_med" className="btn btn-outline-dark" >Don't see your medication?</a>
-        <button className="btn btn-outline-dark filter" onClick = {filterAdded}>Filter by medications I added</button>
+        <button className="btn btn-outline-dark filter" onClick = {filterAdded}>{!filterOn? "Filter by medications I added":"View all medications"}</button>
         <form className="d-flex search">
             <input onChange={handleSearch} className="form-control me-2" type="search" placeholder="Search by Generic Name" aria-label="Search"/>
             <button className="btn btn-outline-dark" type="submit">Search</button>

@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-
+import {useNavigate} from 'react-router-dom'
 
 function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
     const [brandName, setBrandName] = useState("")
@@ -16,6 +16,12 @@ function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
 
     const user_id=+localStorage.getItem("user_id")
 
+    let history = useNavigate();
+    const routeChange = () =>{ 
+        let path = "/search"; 
+        history(path);
+    }
+
     async function handleSubmit(e){
         e.preventDefault();
         const newMed = {user_id: user_id, brand_name: brandName, generic_name: genericName, dosage: dosage}
@@ -28,7 +34,7 @@ function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
         if (res.ok){
             addNewMed(medAdded);
             console.log(medAdded)
-            // routeChange();
+            routeChange();
         } else {
             setErrors(medAdded.error)
             console.log(errors)

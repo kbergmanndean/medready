@@ -25,7 +25,6 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
             setAllMeds(filteredAddedMeds.concat(meds))
             })
     }
-    //right now remove button only shows up on added med when its on filter
 
     return(
         user_id?

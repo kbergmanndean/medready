@@ -7,14 +7,13 @@ function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
     const [dosage, setDosage] = useState("")
     const [errors, setErrors] = useState([])
 
+    const user_id=+localStorage.getItem("user_id")
 
     const addNewMed = medAdded => {
         const newMedsArray = [...addedMeds, medAdded]
         setAddedMeds(newMedsArray);
         setAllMeds([...allMeds, medAdded])
     }
-
-    const user_id=+localStorage.getItem("user_id")
 
     let history = useNavigate();
     const routeChange = () =>{ 

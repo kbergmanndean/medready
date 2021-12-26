@@ -9,7 +9,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
     const user_id = localStorage.getItem("user_id")
     const handleSearch=(e)=>{setSearch(e.target.value)}
     let displayMeds=allMeds.length>0? allMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase()) && (m.user_id==user_id || !m.user_id)) : allMeds.filter(m=>m.user_id==user_id || !m.user_id)
-    let displayAddedMeds = addedMeds.length>0? addedMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase())):addedMeds
+    let displayAddedMeds = addedMeds.length>0? addedMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase()) && (m.user_id==user_id || !m.user_id)) : addedMeds.filter(m=>m.user_id==user_id || !m.user_id)
 
     function filterAdded(){
         setFilterOn(!filterOn)

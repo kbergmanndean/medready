@@ -36,12 +36,9 @@ function AddDoc({setUser,user, setDoctors, doctors}){
         }
         else {
         setErrors(doctorAdded.error)
-        }
-        
+        } 
     }
 
-
-    
 
     return(
         localStorage.getItem("user_id")?

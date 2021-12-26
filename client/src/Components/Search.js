@@ -39,8 +39,32 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
             <button className="btn btn-outline-dark" type="submit">Search</button>
         </form>
         <ul>  
-            {filterOn ? displayAddedMeds.map(m=>{return(<li className="med-li" key={`added-${m.id}`}>Generic Name: {m.generic_name}, Brand Name: {m.brand_name}, Dosage: {m.dosage} <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">Add Prescription</a><button className="btn btn-outline-dark" onClick={()=>removeMed(m.id)}>Remove</button></li>)}):
-        displayMeds.length>0?displayMeds.map((m)=>{return(<li className="med-li" key={m.id+m.generic_name}>Generic Name: {m.generic_name}, Brand Name: {m.brand_name}, Dosage: {m.dosage} <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">Add Prescription</a>{m.user_id?<button className="btn btn-outline-dark" onClick={()=>removeMed(m.id)}>Remove</button>:null}</li>)}):null}
+            {filterOn ? displayAddedMeds.map(m=>{return(
+            <li className="med-li" key={`added-${m.id}`}>
+                Generic Name: {m.generic_name}, 
+                Brand Name: {m.brand_name}, 
+                Dosage: {m.dosage} 
+                <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">
+                    Add Prescription
+                </a>
+                <button className="btn btn-outline-dark" onClick={()=>removeMed(m.id)}>
+                    Remove
+                </button>
+            </li>)}):
+            displayMeds.length>0 ? displayMeds.map((m)=>{return(
+            <li className="med-li" key={m.id+m.generic_name}>
+                Generic Name: {m.generic_name}, 
+                Brand Name: {m.brand_name}, 
+                Dosage: {m.dosage} 
+                <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark">
+                    Add Prescription
+                </a>
+                {m.user_id ? 
+                <button className="btn btn-outline-dark" onClick={()=>removeMed(m.id)}>
+                    Remove
+                </button> : null}
+            </li>)}):
+            null}
         </ul>
     </div>
     : <LoginAuth user={user} setUser={setUser}/>

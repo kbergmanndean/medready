@@ -104,6 +104,9 @@ margin:auto;
   margin-left:100pt;
   margin-right:100pt;
 }
+.add-button{
+  margin-left:10pt;
+}
 .filter{
   margin:10pt;
 }

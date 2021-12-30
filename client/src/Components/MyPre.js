@@ -84,12 +84,23 @@ function MyPre({pre, prescriptions, setPrescriptions}){
                     <br/>
                     <span className="info">Brand Name: </span>
                     {pre.medication.brand_name} 
-                <br/>Strength: {pre.medication.dosage} 
-                <br/>Daily Dosage: {pre.daily_dosage}
-                <br/>Doses in Container:{pre.doses_in_container}
-                <br/>Directions: {pre.directions}
-                <br/>Prescribing Doctor: {pre.doctor.name}, {pre.doctor.profession}
-                <br/>Date Filled: {formattedDate}
+                    <br/>
+                    <span className="info">Strength: </span>
+                    {pre.medication.dosage} 
+                    <br/>
+                    <span className="info">Daily Dosage: </span>
+                    {pre.daily_dosage}
+                    <br/>
+                    <span className="info">Doses in Container: </span>
+                    {pre.doses_in_container}
+                    <br/>
+                    <span className="info">Directions: </span>
+                    {pre.directions}
+                    <br/>
+                    <span className="info">Prescribing Doctor: </span>
+                    {pre.doctor.name}, {pre.doctor.profession}
+                    <br/><span className="info">Date Filled: </span>
+                    {formattedDate}
                 </p>
                 <a className="btn btn-outline-dark" href={`/#/edit/${pre.id}`}>Edit</a> <button className="btn btn-outline-dark" onClick={()=>{handleDelete(pre.id)}}>Remove</button>
             </div> 

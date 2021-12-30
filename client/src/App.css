@@ -51,9 +51,13 @@
 .navbar{
   background-color:#f7c9ca
 }
+/* .navbar-nav{
+  background-color:red;
+} */
 .user{
   margin-left:20pt;
   color:lightblack;
+  font-weight:bold;
 }
 .card {
   background-color:#e9f8f8;

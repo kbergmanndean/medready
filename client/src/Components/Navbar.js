@@ -19,6 +19,7 @@ function Navbar({user, setUser}){
     };
 
     const user_id=localStorage.getItem("user_id")
+    const username=localStorage.getItem("username")
 
     function handleDelete(){
         async function destroy(){
@@ -34,7 +35,7 @@ function Navbar({user, setUser}){
     return(
         <nav className="navbar navbar-expand-lg navbar-light">
             <a className="navbar-brand" href="/">MedReady</a>
-            {localStorage.getItem("user_id")?<span className="user">User #{user_id}</span>:null}
+            {localStorage.getItem("user_id")?<span className="user">{username}</span>:null}
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>

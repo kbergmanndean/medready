@@ -25,6 +25,7 @@ function Login({setUser,user}){
             setUser(userData);
             console.log(user);
             localStorage.setItem("user_id", userData.id)
+            localStorage.setItem("username", userData.user_name)
             // navigate('/');
         } else {
             setErrors(userData.errors)

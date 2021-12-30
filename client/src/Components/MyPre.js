@@ -79,8 +79,11 @@ function MyPre({pre, prescriptions, setPrescriptions}){
             <img src={bottle} className="card-img-top bottle" alt="..."/>
             <div className="card-body">
                 <p className="card-text">
-                Generic Name: {pre.medication.generic_name} 
-                <br/>Brand Name: {pre.medication.brand_name} 
+                    <span className="info">Generic Name: </span>
+                    {pre.medication.generic_name} 
+                    <br/>
+                    <span className="info">Brand Name: </span>
+                    {pre.medication.brand_name} 
                 <br/>Strength: {pre.medication.dosage} 
                 <br/>Daily Dosage: {pre.daily_dosage}
                 <br/>Doses in Container:{pre.doses_in_container}

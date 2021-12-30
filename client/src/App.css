@@ -1,7 +1,7 @@
 .App {
   text-align:center;
   font-family: 'Quicksand', sans-serif;
-  font-weight:bold;
+  font-weight:600;
   background-color:#e9f8f8;
 }
 .page-footer{
@@ -60,6 +60,11 @@
   margin:10pt;
   margin-left:40pt;
   border:0pt;
+  /* text-align:left; */
+}
+.info {
+  /* font-weight:bold; */
+
 }
 .bottle{
   /* padding-top:20pt;*/

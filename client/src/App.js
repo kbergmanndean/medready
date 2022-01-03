@@ -13,6 +13,7 @@ import Login from "./Components/Login"
 import Navbar from "./Components/Navbar"
 import LoginAuth from "./Components/LoginAuth"
 import Footer from "./Components/Footer"
+import UserPage from "./Components/UserPage"
 
 function App() {
 
@@ -70,6 +71,7 @@ function App() {
           {prescriptions? prescriptions.map(pre=>{return <Route user={user} key={pre.id} exact path={`/edit/${pre.id}`} element={<Edit doctors={doctors} pre={pre} page={page} setPage={setPage}/>}/>}):null}
           {meds? meds.map(item=>{return <Route user={user} key={item.id} exact path={`/medications/${item.id}`} element={<AddPre key={item.id} med={item} doctors={doctors} prescriptions={prescriptions} setPrescriptions={setPrescriptions} isMounted={isMounted}/>}/>}):null}
           <Route exact path="/login" element={<LoginAuth user={user} setUser={setUser}/>}/> 
+          <Route exact path="/user" element={<UserPage setUser={setUser}/>}/>
           </Routes>
       <Footer/>
     </div>

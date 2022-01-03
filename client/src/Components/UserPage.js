@@ -1,5 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
+import bird from "../pictures/bird2.png"
 
 function UserPage({setUser}){
 
@@ -32,7 +33,14 @@ function UserPage({setUser}){
     };
 
     return(
-        <div>
+        <div className="user-page">
+           <div className="head">
+            <hr/>
+            <img src={bird} style={{width:"100pt"}} alt="bird logo" className="bird"/>
+            <h1 className="header">{username}</h1>
+            <hr/>
+        </div>
+            <button className="btn btn-outline-dark logout" onClick={handleLogout}>Log Out</button>
             <button className="btn btn-outline-dark delete-account" onClick={handleDelete}>Delete Account</button>
         </div>
     )

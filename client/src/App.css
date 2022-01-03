@@ -10,8 +10,12 @@
 }
 .home,.login, .search-page,.addpre,.addDoc,.edit{
   position:relative;
-  min-height:427pt;
-  /* min-height:100vh; */
+  /* min-height:427pt; */
+  min-height:100vh;
+}
+.user-page{
+  /* min-height:71vh; */
+  min-height:100vh
 }
 .logout{
   background-color:#fff3f4;
@@ -55,9 +59,13 @@
   background-color:red;
 } */
 .user{
+  text-decoration:none;
   margin-left:20pt;
-  color:lightblack;
+  color:black;
   font-weight:bold;
+}
+.user:hover{
+  color:gray;
 }
 .card {
   background-color:#e9f8f8;

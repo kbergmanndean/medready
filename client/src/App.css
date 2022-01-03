@@ -8,14 +8,10 @@
   background-color:#f7c9ca;
   bottom:0;
 }
-.home,.login, .search-page,.addpre,.addDoc,.edit,.docs{
+.home,.login, .search-page,.addpre,.addDoc,.edit,.docs,.user-page{
   position:relative;
   /* min-height:427pt; */
-  min-height:100vh;
-}
-.user-page{
-  /* min-height:71vh; */
-  min-height:100vh
+  min-height:80vh;
 }
 .logout{
   background-color:#fff3f4;

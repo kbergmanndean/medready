@@ -59,9 +59,6 @@ function Navbar({user, setUser}){
                             <li className="nav-item">
                                 <button className="btn btn-outline-dark logout" onClick={handleLogout}>Log Out</button>
                             </li>
-                            <li className="nav-item">
-                                <button className="btn btn-outline-dark delete-account" onClick={handleDelete}>Delete Account</button>
-                            </li>
                         </div>
                     :
                     <li className="nav-item">

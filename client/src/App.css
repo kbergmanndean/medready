@@ -8,7 +8,7 @@
   background-color:#f7c9ca;
   bottom:0;
 }
-.home,.login, .search-page,.addpre,.addDoc,.edit{
+.home,.login, .search-page,.addpre,.addDoc,.edit,.docs{
   position:relative;
   /* min-height:427pt; */
   min-height:100vh;

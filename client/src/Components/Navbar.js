@@ -21,17 +21,6 @@ function Navbar({user, setUser}){
     const user_id=localStorage.getItem("user_id")
     const username=localStorage.getItem("username")
 
-    function handleDelete(){
-        async function destroy(){
-            await fetch(`https://medready.herokuapp.com/users/${user_id}`,{
-                method:"DELETE"
-            })
-                
-        };destroy();
-        handleLogout();
-        
-    };
-
     return(
         <nav className="navbar navbar-expand-lg navbar-light">
             <a className="navbar-brand" href="/">MedReady</a>

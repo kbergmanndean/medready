@@ -7,18 +7,14 @@ import {useEffect} from "react"
 function LoginAuth({ setUser ,user}) {
   const [showLogin, setShowLogin] = useState(true);
 
-  useEffect(()=>{
-    console.log("page exists");
-  },[])
-
   return (
     <div className="login">
       <div className="head">
-            <hr/>
-            <img src={bird2} style={{width:"100pt"}} alt="bird logo" className="bird"/>
-            <h1 className="header">MedReady</h1>
-            <hr/>
-        </div>
+        <hr/>
+        <img src={bird2} style={{width:"100pt"}} alt="bird logo" className="bird"/>
+        <h1 className="header">MedReady</h1>
+        <hr/>
+      </div>
       {showLogin ? (
         <>
           <Login setUser={setUser} user={user}/>

@@ -73,7 +73,7 @@ function MyPre({pre, prescriptions, setPrescriptions}){
     return(
         pre.user_id===user_id?
         (daysLeft <= 7 && alert == true)?
-            <Alert daysLeft={daysLeft} pre={pre} onOkay={onOkay}/>    
+            <Alert daysLeft={daysLeft} pre={pre} onOkay={onOkay}/>  
         : 
         <div className="card" style={{width: "18rem"}}>
             <img src={bottle} className="card-img-top bottle" alt="..."/>

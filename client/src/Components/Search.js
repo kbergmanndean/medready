@@ -2,27 +2,29 @@ import React, {useState} from "react"
 import LoginAuth from './LoginAuth'
 
 
-function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUser}){
+function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds, user, setUser}){
     const [search, setSearch]=useState("")
     const [filterOn, setFilterOn]=useState(false)
 
     const user_id = localStorage.getItem("user_id")
+
     const handleSearch=(e)=>{setSearch(e.target.value)}
-    let displayMeds=allMeds.length>0? allMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase()) && (m.user_id==user_id || !m.user_id)) : allMeds.filter(m=>m.user_id==user_id || !m.user_id)
-    let displayAddedMeds = addedMeds.length>0? addedMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase()) && (m.user_id==user_id || !m.user_id)) : addedMeds.filter(m=>m.user_id==user_id || !m.user_id)
+
+    let displayMeds = meds.length>0? meds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase()) && (m.user_id==user_id || !m.user_id)) : meds.filter(m=>m.user_id==user_id || !m.user_id)
+    let displayAddedMeds = addedMeds.length>0? addedMeds.filter(m=>m.generic_name.toLowerCase().includes(search.toLowerCase()) && (m.user_id==user_id)) : addedMeds.filter(m=>m.user_id==user_id)
 
     function filterAdded(){
         setFilterOn(!filterOn)
     }
 
     async function removeMed(id){
-        await fetch(`https://medready.herokuapp.com/added_medications/${id}`,{
+        await fetch(`https://medready.herokuapp.com/medications/${id}`,{
             method:"DELETE",
         })
             .then(()=>{
             const filteredAddedMeds = addedMeds.filter(med=>med.id!==id)
             setAddedMeds(filteredAddedMeds)
-            setAllMeds(filteredAddedMeds.concat(meds))
+            setMeds(filteredAddedMeds.concat(meds))
             })
     }
 
@@ -44,7 +46,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
                     Generic Name: {m.generic_name}, 
                     Brand Name: {m.brand_name}, 
                     Dosage: {m.dosage} 
-                    <a href={`/#/added-medications/${m.id}`} className="btn btn-outline-dark add-button">
+                    <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark add-button">
                         Add Prescription
                     </a>
                     <button className="btn btn-outline-dark" onClick={()=>removeMed(m.id)}>
@@ -56,7 +58,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
                     Generic Name: {m.generic_name}, 
                     Brand Name: {m.brand_name}, 
                     Dosage: {m.dosage} 
-                    <a href={m.user_id? `/#/added-medications/${m.id}` : `/#/medications/${m.id}`} className="btn btn-outline-dark add-button">
+                    <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark add-button">
                         Add Prescription
                     </a>
                     {m.user_id ? 

@@ -23,19 +23,22 @@ function App() {
   const [page, setPage]=useState("")
   const [user, setUser]=useState(null)
   const [addedMeds, setAddedMeds]=useState([])
-  const [allMeds, setAllMeds]=useState([])
+  // const [allMeds, setAllMeds]=useState([])
 
   let isMounted
 
   useEffect(() => {
     async function fetchMedData() {
       const res = await fetch("https://medready.herokuapp.com/medications");
-      const resAdded = await fetch("https://medready.herokuapp.com/added_medications");
+      // const resAdded = await fetch("https://medready.herokuapp.com/added_medications");
       const medData = await res.json();
-      const addedMedData = await resAdded.json();
+      // const addedMedData = await resAdded.json();
+      
+      // setAddedMeds(addedMedData);
       setMeds(medData);
-      setAddedMeds(addedMedData);
-      setAllMeds(medData.concat(addedMedData));
+      setAddedMeds(medData.filter(m=>m.user_id))
+      console.log(addedMeds)
+      // setAllMeds(medData.concat(addedMedData));
     }
     async function fetchDocData() {
       const res = await fetch("https://medready.herokuapp.com/doctors");
@@ -62,15 +65,14 @@ function App() {
       <Navbar user={user} setUser={setUser}/>
         <Routes>
           <Route exact path="/signup" element= {<Auth setUser={setUser} user={user}/>}/>
-          <Route exact path="/search" element={<Search setAllMeds={setAllMeds} allMeds={allMeds} addedMeds={addedMeds} setAddedMeds={setAddedMeds} meds={meds} user={user} setUser={setUser}/>}/>
+          <Route exact path="/search" element={<Search addedMeds={addedMeds} setAddedMeds={setAddedMeds} meds={meds} setMeds={setMeds} user={user} setUser={setUser}/>}/>
           <Route exact path="/log_in" element= {<Login user={user} setUser={setUser}/>}/> 
           <Route exact path="/" element={<Home user={user} prescriptions={prescriptions} setPrescriptions={setPrescriptions} page={page} setPage={setPage}/>}/>
           <Route exact path="/doctors" element={<Doctors setUser={setUser} user={user} doctors={doctors} setDoctors={setDoctors}/>}/>
           <Route exact path="/add_doc" element={<AddDoc setUser={setUser} user={user} setDoctors={setDoctors} doctors={doctors}/>}/>
-          <Route exact path="/add_med" element={<AddMed setAllMeds={setAllMeds} allMeds={allMeds} addedMeds={addedMeds} setAddedMeds={setAddedMeds} meds={meds} setMeds={setMeds}/>}/>
+          <Route exact path="/add_med" element={<AddMed addedMeds={addedMeds} setAddedMeds={setAddedMeds} meds={meds} setMeds={setMeds}/>}/>
           {prescriptions? prescriptions.map(pre=>{return <Route user={user} key={pre.id} exact path={`/edit/${pre.id}`} element={<Edit doctors={doctors} pre={pre} page={page} setPage={setPage}/>}/>}):null}
           {meds? meds.map(item=>{return <Route key={item.id} exact path={`/medications/${item.id}`} element={<AddPre key={item.id} med={item} doctors={doctors} prescriptions={prescriptions} setPrescriptions={setPrescriptions}/>}/>}):null}
-          {addedMeds? addedMeds.map(item=>{return <Route key={item.id} exact path={`/added-medications/${item.id}`} element={<AddPre key={item.id} med={item} doctors={doctors} prescriptions={prescriptions} setPresriptions={setPrescriptions}/>}/>}):null}
           <Route exact path="/login" element={<LoginAuth user={user} setUser={setUser}/>}/> 
           <Route exact path="/user" element={<UserPage setUser={setUser}/>}/>
           </Routes>

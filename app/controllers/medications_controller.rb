@@ -21,7 +21,7 @@ class MedicationsController < ApplicationController
     end
 
     def destroy
-        medDel=Medication.find_by(id:params:[:id])
+        medDel=Medication.find_by(id:params[:id])
         medDel.destroy
         head:no_content
     end

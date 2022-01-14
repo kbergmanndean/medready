@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 
-function AddPre({med, doctors, prescriptions, setPrescriptions, isMounted}){
+function AddPre({med, doctors, prescriptions, setPrescriptions}){
     const [preDoc, setPreDoc] = useState(0)
     const [dose, setDose] = useState("")
     const [direct, setDirect] = useState("")

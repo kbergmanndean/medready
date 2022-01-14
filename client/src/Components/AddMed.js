@@ -10,9 +10,8 @@ function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
     const user_id=+localStorage.getItem("user_id")
 
     const addNewMed = medAdded => {
-        const newMedsArray = [...addedMeds, medAdded]
-        setAddedMeds(newMedsArray);
-        setAllMeds([...allMeds, medAdded])
+        setAddedMeds([...addedMeds, medAdded])
+        setMeds([...meds, medAdded])
     }
 
     let history = useNavigate();
@@ -24,7 +23,7 @@ function AddMed({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds}){
     async function handleSubmit(e){
         e.preventDefault();
         const newMed = {user_id: user_id, brand_name: brandName, generic_name: genericName, dosage: dosage}
-        const res = await fetch("https://medready.herokuapp.com/added_medications",{
+        const res = await fetch("https://medready.herokuapp.com/medications",{
             headers:{"Content-Type":"application/json"},
             method:"POST",
             body:JSON.stringify(newMed)

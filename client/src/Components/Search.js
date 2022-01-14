@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import LoginAuth from './LoginAuth'
 
 
-function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds, user, setUser}){
+function Search({addedMeds, setAddedMeds, meds, setMeds, user, setUser}){
     const [search, setSearch]=useState("")
     const [filterOn, setFilterOn]=useState(false)
 
@@ -24,7 +24,8 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, setMeds, us
             .then(()=>{
             const filteredAddedMeds = addedMeds.filter(med=>med.id!==id)
             setAddedMeds(filteredAddedMeds)
-            setMeds(filteredAddedMeds.concat(meds))
+            const filteredMeds = meds.filter(med=>med.id!==id)
+            setMeds(filteredMeds)
             })
     }
 

@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 2022_01_14_193826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "added_medications", force: :cascade do |t|
-    t.string "generic_name"
-    t.string "dosage"
-    t.string "brand_name"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "doctors", force: :cascade do |t|
     t.string "name"
     t.string "profession"

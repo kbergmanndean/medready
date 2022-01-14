@@ -45,11 +45,13 @@ function AddPre({med, doctors, prescriptions, setPrescriptions}){
         });
         const preAdded=await res.json();
         if (res.ok){
+            
             addNewPre(preAdded);
             routeChange();
         } else {
             setErrors(preAdded.error)
             console.log(errors)
+            console.log(newPre)
         }
     }
     

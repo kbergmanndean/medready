@@ -70,6 +70,7 @@ function App() {
           <Route exact path="/add_med" element={<AddMed setAllMeds={setAllMeds} allMeds={allMeds} addedMeds={addedMeds} setAddedMeds={setAddedMeds} meds={meds} setMeds={setMeds}/>}/>
           {prescriptions? prescriptions.map(pre=>{return <Route user={user} key={pre.id} exact path={`/edit/${pre.id}`} element={<Edit doctors={doctors} pre={pre} page={page} setPage={setPage}/>}/>}):null}
           {meds? meds.map(item=>{return <Route user={user} key={item.id} exact path={`/medications/${item.id}`} element={<AddPre key={item.id} med={item} doctors={doctors} prescriptions={prescriptions} setPrescriptions={setPrescriptions} isMounted={isMounted}/>}/>}):null}
+          {addedMeds? addedMeds.map(item=>{return <Route user={user} key={item.id} exact path={`/added-medications/${item.id}`} element={<AddPre key={item.id} med={item} doctors={doctors} prescriptions={prescriptions} setPresriptions={setPrescriptions} isMounted={isMounted}/>}/>}):null}
           <Route exact path="/login" element={<LoginAuth user={user} setUser={setUser}/>}/> 
           <Route exact path="/user" element={<UserPage setUser={setUser}/>}/>
           </Routes>

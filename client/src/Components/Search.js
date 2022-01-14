@@ -44,7 +44,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
                     Generic Name: {m.generic_name}, 
                     Brand Name: {m.brand_name}, 
                     Dosage: {m.dosage} 
-                    <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark add-button">
+                    <a href={`/#/added-medications/${m.id}`} className="btn btn-outline-dark add-button">
                         Add Prescription
                     </a>
                     <button className="btn btn-outline-dark" onClick={()=>removeMed(m.id)}>
@@ -56,7 +56,7 @@ function Search({allMeds, setAllMeds, addedMeds, setAddedMeds, meds, user, setUs
                     Generic Name: {m.generic_name}, 
                     Brand Name: {m.brand_name}, 
                     Dosage: {m.dosage} 
-                    <a href={`/#/medications/${m.id}`} className="btn btn-outline-dark add-button">
+                    <a href={m.user_id? `/#/added-medications/${m.id}` : `/#/medications/${m.id}`} className="btn btn-outline-dark add-button">
                         Add Prescription
                     </a>
                     {m.user_id ? 

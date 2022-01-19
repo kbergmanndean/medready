@@ -13,9 +13,12 @@ function Home({prescriptions, setPrescriptions}){
             <hr/>
         </div>
         
-        {localStorage.getItem("user_id") && prescriptions? <div className="card-holder row row-cols-1 row-cols-md-3">
+        {localStorage.getItem("user_id") && prescriptions? 
+        <div id ="pres">
             <h1 className="subhead">My Prescriptions</h1>
+            <div className="card-holder row row-cols-1 row-cols-md-3">
             {prescriptions.map((pre)=>{return <MyPre key={pre.id} pre={pre} prescriptions={prescriptions} setPrescriptions={setPrescriptions}/>})}</div>
+            </div>
         : <><h2 className="center">Log in to see your prescriptions.</h2><br/><br/><br/><br/><br/><br/><br/><br/></>}
     </div>
     )}
